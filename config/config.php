@@ -15,7 +15,7 @@ function page_active($page_now)
     $ex  = explode('/', $url);
     $co  = count($ex);
     $page = $ex[$co - 2];
-
+    
     if ($page == $page_now) {
         return 'active';
     }

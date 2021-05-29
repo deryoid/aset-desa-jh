@@ -1,16 +1,16 @@
 <?php
-require_once '../config/config.php';
-include_once '../config/auth-cek.php';
+require_once '../../config/config.php';
+include_once '../../config/auth-cek.php';
 ?>
 <!DOCTYPE html>
 <html>
-<?php include_once '../template/admin/head.php'; ?>
+<?php include_once '../../template/admin/head.php'; ?>
 
 
     <body>
 
         <!-- Navigation Bar-->
-<?php include_once '../template/admin/topbar.php'; ?>
+<?php include_once '../../template/admin/topbar.php'; ?>
         <!-- End Navigation Bar-->
 
 
@@ -73,7 +73,7 @@ include_once '../config/auth-cek.php';
             </div> <!-- end container -->
 
             <!-- Footer -->
-            <?php include_once '../template/admin/footer.php'; ?>
+            <?php include_once '../../template/admin/footer.php'; ?>
             <!-- End Footer -->
 
         </div>
@@ -83,7 +83,7 @@ include_once '../config/auth-cek.php';
 
 
 
-        <?php include_once '../template/admin/script.php'; ?>
+        <?php include_once '../../template/admin/script.php'; ?>
 
     </body>
 </html>

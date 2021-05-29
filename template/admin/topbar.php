@@ -24,13 +24,13 @@
                             <!-- Navigation Menu-->
                             <ul class="navigation-menu">
                             <?php if ($_SESSION['role'] == 'superadmin') : ?>
-                                <li class="has-submenu <?= page_active('admin') ?>">
-                                    <a href="index">
+                                <li class="has-submenu">
+                                    <a href="index" class="<?= page_active('admin') ? 'active' : '' ?>">
                                         <span><i class="ti-home"></i></span><span> Dashboard </span> </a>
                                     </li>
 
-                                <li class="has-submenu">
-                                    <a href="#"> <span><i class="ti-files"></i></span><span> Data Master </span> </a>
+                                <li class="has-submenu <?= page_active('sumberdana') ? 'active' : '' ?>">
+                                    <a href="#"><span><i class="ti-files"></i></span><span> Data Master </span> </a>
                                     <ul class="submenu">
                                         <li><a href="<?= base_url('admin/sumberdana') ?>">Sumber Dana</a></li>
                                     </ul>
