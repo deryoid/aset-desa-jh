@@ -19,56 +19,118 @@ include_once '../../config/auth-cek.php';
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="header-title m-t-0 m-b-20">SELAMAT DATANG DI APLIKASI PENGELOLAAN ADMINISTRASI PENGADAAN 
-                         INVENTARIS DAN MUTASI ASET DESA JAMBU HULU BERBASIS WEB</h4>
+                        <h4 class="header-title m-t-0 m-b-20">Sumber Dana</h4>
                     </div>
                 </div>
 
+                <div class="m-t-30">
+                    <ul class="nav nav-tabs tabs-bordered">
+                        <li class="nav-item">
+                            <a href="#tabel" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                                Sumber Dana
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#tambah-data" data-toggle="tab" aria-expanded="true" class="nav-link">
+                                Tambah Data
+                            </a>
+                        </li>
+                    </ul>
 
-                <div class="row">
-                    <!-- <div class="col-sm-4">
-                        <div class="card-box">
-                            <a href="#" class="btn btn-sm btn-default pull-right">View</a>
-                            <h6 class="text-muted font-13 m-t-0 text-uppercase">Product Sold</h6>
-                            <h3 class="m-b-20 mt-3"><span>1,890</span></h3>
-                            <div class="progress progress-sm m-0">
-                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" style="width: 77%;">
-                                    <span class="sr-only">77% Complete</span>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tabel">
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <!-- Tabel -->
+                                    <div class="panel panel-primary panel-fill">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title" style="color: white;">Sumber Dana</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="row p-t-50">
+                                                    <div class="col-12">
+                                                        <div class="table-responsive">
+                                                            <table id="responsive-datatable" class="table table-bordered table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>No</th>
+                                                                    <th>Nama Sumber Dana</th>
+                                                                    <th>Keterangan</th>
+                                                                    <th style="text-align: center;"><span class="badge badge-primary"><i class="mdi mdi-cogs"></i></span></th>
+                                                                </tr>
+                                                                </thead>
+                                                                <?php 
+                                                                $no = 1;
+                                                                $data = $koneksi->query("SELECT * FROM sumberdana ORDER BY id_sumberdana ASC");
+                                                                foreach ($data as $row) {  
+                                                                ?>
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td><?= $no++; ?></td>
+                                                                    <td><?= $row['nama_sumberdana']; ?></td>
+                                                                    <td><?= $row['keterangan']; ?></td>
+                                                                    <td style="text-align: center;">
+                                                                    <a href=""><span class="badge badge-success badge-lg"><i class="mdi mdi-briefcase-edit-outline"></i></span></a>
+                                                                    <a href=""><span class="badge badge-danger badge-lg"><i class="mdi mdi-trash-can"></i></span></a>
+                                                                    </td>
+                                                                </tr>
+                                                                </tbody>
+                                                            <?php } ?>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- end row -->
+                                        </div>
+                                    </div>
+                                    <!-- Tabel -->
+
                                 </div>
+
                             </div>
                         </div>
-                    </div> -->
+                        <div class="tab-pane" id="tambah-data">
+                            <!-- Personal-Information -->
+                            <div class="panel panel-primary panel-fill">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title" style="color: white;">Tambah Data</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label for="FullName">Full Name</label>
+                                            <input type="text" value="John Doe" id="FullName" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Email">Email</label>
+                                            <input type="email" value="first.last@example.com" id="Email" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Username">Username</label>
+                                            <input type="text" value="john" id="Username" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Password">Password</label>
+                                            <input type="password" placeholder="6 - 15 Characters" id="Password" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="RePassword">Re-Password</label>
+                                            <input type="password" placeholder="6 - 15 Characters" id="RePassword" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="AboutMe">About Me</label>
+                                            <textarea style="height: 125px" id="AboutMe" class="form-control">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</textarea>
+                                        </div>
+                                        <button class="btn btn-primary waves-effect waves-light w-md" type="submit">Save</button>
+                                    </form>
 
-                    <!-- <div class="col-sm-4">
-                        <div class="card-box">
-                            <a href="#" class="btn btn-sm btn-default pull-right">View</a>
-                            <h6 class="text-muted font-13 m-t-0 text-uppercase">Average Price</h6>
-                            <h3 class="m-b-20 mt-3">$<span>22.56</span></h3>
-                            <div class="progress progress-sm m-0">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" style="width: 77%;">
-                                    <span class="sr-only">77% Complete</span>
                                 </div>
                             </div>
+                            <!-- Personal-Information -->
                         </div>
-                    </div> -->
-
-                    <!-- <div class="col-sm-4">
-                        <div class="card-box">
-                            <a href="#" class="btn btn-sm btn-default pull-right">View</a>
-                            <h6 class="text-muted m-t-0 font-13 text-uppercase">Orders</h6>
-                            <h3 class="m-b-20 mt-3">9,754</h3>
-                            <div class="progress progress-sm m-0">
-                                <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" style="width: 77%;">
-                                    <span class="sr-only">77% Complete</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
+                    </div>
                 </div>
                 <!-- end row -->
-
-
 
             </div> <!-- end container -->
 
