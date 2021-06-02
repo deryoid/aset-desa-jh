@@ -32,7 +32,9 @@
 
         <!-- Selection table -->
         <script src="<?= base_url() ?>/assets/plugins/datatables/dataTables.select.min.js"></script>
-
+        <!-- Sweet-Alert  -->
+        <script src="<?= base_url() ?>/assets/plugins/sweet-alert2/sweetalert2.min.js"></script>
+        <script src="<?= base_url() ?>/assets/pages/jquery.sweet-alert.init.js"></script>
         <!-- App js -->
         <script src="<?= base_url() ?>/assets/js/jquery.core.js"></script>
         <script src="<?= base_url() ?>/assets/js/jquery.app.js"></script>

@@ -38,7 +38,7 @@ include_once '../../config/auth-cek.php';
                     </ul>
 
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tabel">
+                        <div class="tab-pane <?= $_SESSION['alert'] == "Berhasil" || !$_SESSION['alert'] ? "active" : "" ?>" id="tabel">
                             <div class="row">
 
                                 <div class="col-md-12">
@@ -89,39 +89,24 @@ include_once '../../config/auth-cek.php';
 
                             </div>
                         </div>
-                        <div class="tab-pane" id="tambah-data">
+                        <div class="tab-pane <?= $_SESSION['alert'] == "Gagal" ? "active" : "" ?>" id="tambah-data">
                             <!-- Personal-Information -->
                             <div class="panel panel-primary panel-fill">
                                 <div class="panel-heading">
                                     <h3 class="panel-title" style="color: white;">Tambah Data</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <form role="form">
+                                    <form role="form" action="proses" method="POST" enctype="multipart/form-data">
                                         <div class="form-group">
-                                            <label for="FullName">Full Name</label>
-                                            <input type="text" value="John Doe" id="FullName" class="form-control">
+                                            <label for="sumberdana">Nama Sumber Dana</label>
+                                            <input type="text"  id="sumberdana" class="form-control" name="nama_sumberdana">
                                         </div>
                                         <div class="form-group">
-                                            <label for="Email">Email</label>
-                                            <input type="email" value="first.last@example.com" id="Email" class="form-control">
+                                            <label for="keterangan">Keterangan Sumber Dana</label>
+                                            <input type="text"  id="keterangan" class="form-control" name="keterangan">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="Username">Username</label>
-                                            <input type="text" value="john" id="Username" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="Password">Password</label>
-                                            <input type="password" placeholder="6 - 15 Characters" id="Password" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="RePassword">Re-Password</label>
-                                            <input type="password" placeholder="6 - 15 Characters" id="RePassword" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="AboutMe">About Me</label>
-                                            <textarea style="height: 125px" id="AboutMe" class="form-control">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</textarea>
-                                        </div>
-                                        <button class="btn btn-primary waves-effect waves-light w-md" type="submit">Save</button>
+                                        
+                                        <button class="btn btn-primary waves-effect waves-light w-md" name="tambah" type="submit">Simpan</button>
                                     </form>
 
                                 </div>
@@ -149,3 +134,31 @@ include_once '../../config/auth-cek.php';
 
     </body>
 </html>
+
+<?php
+if (isset($_SESSION['alert'])) {
+    if ($_SESSION['alert'] == "Berhasil") {
+        echo "<script>
+        swal(
+            {
+                title: 'Berhasil',
+                text: 'Tekan Tombol Ok Untuk Melanjutkan!',
+                type: 'success',
+            }
+        )
+        </script>";
+        unset($_SESSION['alert']);
+    }elseif ($_SESSION['alert'] == "Gagal") {
+        echo "<script>
+        swal(
+            {
+                title: 'Gagal',
+                text: 'Tekan Tombol Ok Untuk Melanjutkan!',
+                type: 'error',
+            }
+        )
+        </script>";
+        unset($_SESSION['alert']);
+    }
+}
+?>
