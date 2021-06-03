@@ -33,6 +33,7 @@
                                     <a href="#"><span><i class="ti-files"></i></span><span> Data Master </span> </a>
                                     <ul class="submenu">
                                         <li><a href="<?= base_url('admin/sumberdana') ?>">Sumber Dana</a></li>
+                                        <li><a href="<?= base_url('admin/user') ?>">Pengguna</a></li>
                                     </ul>
                                 </li>
 
