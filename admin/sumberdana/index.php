@@ -1,12 +1,12 @@
 <?php
 require_once '../../config/config.php';
 include_once '../../config/auth-cek.php';
+
 ?>
+
 <!DOCTYPE html>
 <html>
 <?php include_once '../../template/admin/head.php'; ?>
-
-
     <body>
 
         <!-- Navigation Bar-->
@@ -38,7 +38,7 @@ include_once '../../config/auth-cek.php';
                     </ul>
 
                     <div class="tab-content">
-                        <div class="tab-pane <?= $_SESSION['alert'] == "Berhasil" || !$_SESSION['alert'] ? "active" : "" ?>" id="tabel">
+                        <div class="tab-pane <?= $_SESSION['alert'] == "Berhasil" || $_SESSION['alert'] == "Berubah" ||  $_SESSION['alert'] == "Hapus" || !$_SESSION['alert'] ? "active" : "" ?>" id="tabel">
                             <div class="row">
 
                                 <div class="col-md-12">
@@ -71,8 +71,8 @@ include_once '../../config/auth-cek.php';
                                                                     <td><?= $row['nama_sumberdana']; ?></td>
                                                                     <td><?= $row['keterangan']; ?></td>
                                                                     <td style="text-align: center;">
-                                                                    <a href=""><span class="badge badge-success badge-lg"><i class="mdi mdi-briefcase-edit-outline"></i></span></a>
-                                                                    <a href=""><span class="badge badge-danger badge-lg"><i class="mdi mdi-trash-can"></i></span></a>
+                                                                    <a href="update?id=<?= $row['id_sumberdana'] ?>"><span class="badge badge-success badge-lg"><i class="mdi mdi-briefcase-edit-outline"></i></span></a>
+                                                                    <a href="proses?id=<?= $row['id_sumberdana'] ?>"><span class="badge badge-danger badge-lg"><i class="mdi mdi-trash-can"></i></span></a>
                                                                     </td>
                                                                 </tr>
                                                                 </tbody>
@@ -155,6 +155,28 @@ if (isset($_SESSION['alert'])) {
                 title: 'Gagal',
                 text: 'Tekan Tombol Ok Untuk Melanjutkan!',
                 type: 'error',
+            }
+        )
+        </script>";
+        unset($_SESSION['alert']);
+    }elseif ($_SESSION['alert'] == "Berubah") {
+        echo "<script>
+        swal(
+            {
+                title: 'Berhasil Diubah',
+                text: 'Tekan Tombol Ok Untuk Melanjutkan!',
+                type: 'success',   
+            }
+        )
+        </script>";
+        unset($_SESSION['alert']);
+    }elseif ($_SESSION['alert'] == "Hapus") {
+        echo "<script>
+        swal(
+            {
+                title: 'Berhasil Dihapus',
+                text: 'Tekan Tombol Ok Untuk Melanjutkan!',
+                type: 'warning',   
             }
         )
         </script>";
