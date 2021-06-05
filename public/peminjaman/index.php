@@ -3,6 +3,8 @@ require_once '../../config/config.php';
 include_once '../../config/auth-cek.php';
 ?>
 
+?>
+
 
 <!DOCTYPE html>
 <html>
@@ -44,13 +46,20 @@ include_once '../../config/auth-cek.php';
                                                     $sd = $koneksi->query("SELECT * FROM barang ORDER BY id_barang DESC");
                                                     foreach ($sd as $item) {
                                                     ?>
-                                                        <option value="<?= $item['id_barang'] ?>"><?= "(".$item['kode_barang'].")" ?> <?= $item['nama_barang'] ?> | Stok : <?= $item['jumlah_stok'] ?></option>
+                                                        <option value="<?= $item['id_barang'] ?>"><?= "(".$item['kode_barang'].")" ?> <?= $item['nama_barang'] ?>| Stok : <?= $item['jumlah_stok'] ?></option>
                                                     <?php } ?>
                                                 </select>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="jumlah_stok"Stok</label>
+                                            <input type="number" id="jumlah_stok" class="form-control" readonly>
+                                        </div>
+                                        
+
                                         <div class="form-group">
                                             <label for="jumlah_pinjam">Jumlah Pinjam</label>
-                                            <input type="number"  id="jumlah_pinjam" onkeydown="validstok()" class="form-control" name="jumlah_pinjam">
+                                            <input type="number"  id="jumlah_pinjam" onkeyup="validstok()" class="form-control" name="jumlah_pinjam">
                                         </div>
                                         <div class="form-group">
                                             <label for="tanggal_pinjam">Tanggal Pinjam</label>
@@ -92,17 +101,35 @@ include_once '../../config/auth-cek.php';
 
 <script>
 
+$('#id_barang').change(function(){
+    var id_barang = $(this).val();
+     $.ajax({
+         url: 'get.php',
+         method: 'POST',
+         dataType: 'json',
+         data: {
+             id:id_barang             
+         },
+         success: function (data) {
+             $('#jumlah_stok').val(data.jumlah_stok);
+         }
+     });
+});
+
 function validstok() {
-    if (input.jumlah_stok.value > input.jumlah_pinjam.value) {
+    var stok = $('#jumlah_stok').val();
+    var jumlah_pinjam = $('#jumlah_pinjam').val();
+
+    if(parseInt(jumlah_pinjam) > parseInt(stok)){
         swal(
             {
-                title: 'Stok Tidak Tersedia',
+                title: 'Stok Tidak Mencukupi',
                 text: 'Tekan Tombol Ok Untuk Melanjutkan!',
                 type: 'error',
             }
-        )
-    }
-    
+        );
+        $('#jumlah_pinjam').val('');
+    }  
 }
 
 
