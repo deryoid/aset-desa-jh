@@ -35,6 +35,24 @@
         <!-- Sweet-Alert  -->
         <script src="<?= base_url() ?>/assets/plugins/sweet-alert2/sweetalert2.min.js"></script>
         <script src="<?= base_url() ?>/assets/pages/jquery.sweet-alert.init.js"></script>
+
+        <script src="<?= base_url() ?>/assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
+        <script src="<?= base_url() ?>/assets/plugins/select2/js/select2.min.js" type="text/javascript"></script>
+        <script src="<?= base_url() ?>/assets/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js" type="text/javascript"></script>
+        <script src="<?= base_url() ?>/assets/plugins/switchery/switchery.min.js"></script>
+        <script type="text/javascript" src="<?= base_url() ?>/assets/plugins/parsleyjs/parsley.min.js"></script>
+
+        <script src="<?= base_url() ?>/assets/plugins/moment/moment.js"></script>
+        <script src="<?= base_url() ?>/assets/plugins/timepicker/bootstrap-timepicker.js"></script>
+        <script src="<?= base_url() ?>/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+        <script src="<?= base_url() ?>/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+        <script src="<?= base_url() ?>/assets/plugins/clockpicker/js/bootstrap-clockpicker.min.js"></script>
+        <script src="<?= base_url() ?>/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+        <script src="<?= base_url() ?>/assets/plugins/summernote/summernote-bs4.min.js"></script>
+
+        <!-- form advanced init js -->
+        <script src="<?= base_url() ?>/assets/pages/jquery.form-advanced.init.js"></script>
+
         <!-- App js -->
         <script src="<?= base_url() ?>/assets/js/jquery.core.js"></script>
         <script src="<?= base_url() ?>/assets/js/jquery.app.js"></script>
@@ -86,6 +104,16 @@
             "autoWidth": false,
         });
     });
+
+    $(document).ready(function() {
+                $('.form-validation').parsley();
+                $('.summernote').summernote({
+                    height: 350,                 // set editor height
+                    minHeight: null,             // set minimum height of editor
+                    maxHeight: null,             // set maximum height of editor
+                    focus: false                 // set focus to editable area after initializing summernote
+                });
+            });
 
     // FORMAT RUPIAH
     $(".rupiah").mask("000.000.000.000", {

@@ -37,66 +37,27 @@
                                     </ul>
                                 </li>
 
-                                <li class="has-submenu">
-                                    <a href="#"><span><i class="ti-spray"></i></span><span> Other </span> </a>
+                                <li class="has-submenu <?= page_active('aset') ? 'active' : '' ?>"">
+                                    <a href="#"><span><i class="ti-spray"></i></span><span> Data Aset </span> </a>
                                     <ul class="submenu">
                                         <li>
-                                            <a href="ui-elements.html">UI Elements</a>
+                                            <a href="<?= base_url('admin/bangunan') ?>">Bangunan</a>
                                         </li>
-
-                                        <li class="has-submenu">
-                                            <a href="#">Components</a>
-                                            <ul class="submenu">
-                                                <li><a href="components-range-slider.html">Range Slider</a></li>
-                                                <li><a href="components-alerts.html">Alerts</a></li>
-                                                <li><a href="components-icons.html">Icons</a></li>
-                                                <li><a href="components-widgets.html">Widgets</a></li>
-                                            </ul>
-                                        </li>
-
                                         <li>
-                                            <a href="typography.html"> Typography </a>
+                                            <a href="<?= base_url('admin/barang') ?>">Barang</a>
                                         </li>
-
-                                        <li class="has-submenu">
-                                            <a href="#"> Forms </a>
-                                            <ul class="submenu">
-                                                <li><a href="forms-general.html">General Elements</a></li>
-                                                <li><a href="forms-advanced.html">Advanced Form</a></li>
-                                            </ul>
-                                        </li>
-
-                                        <li class="has-submenu">
-                                            <a href="#"> Tables </a>
-                                            <ul class="submenu">
-                                                <li><a href="tables-basic.html">Basic tables</a></li>
-                                                <li><a href="tables-advanced.html">Advanced tables</a></li>
-                                            </ul>
-                                        </li>
-
                                         <li>
-                                            <a href="charts.html"> Charts </a>
+                                            <a href="<?= base_url('admin/jalan') ?>">Jalan</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('admin/tanah') ?>">Tanah</a>
                                         </li>
 
-                                        <li>
-                                            <a href="maps.html"> Maps </a>
-                                        </li>
 
                                     </ul>
                                 </li>
 
-                                <li class="has-submenu">
-                                    <a href="#"> <span><i class="ti-widget"></i></span><span> Extra Pages </span> </a>
-                                    <ul class="submenu">
-                                        <li><a href="extras-timeline.html">Timeline</a></li>
-                                        <li><a href="extras-invoice.html">Invoice</a></li>
-                                        <li><a href="extras-profile.html">Profile</a></li>
-                                        <li><a href="extras-calendar.html">Calendar</a></li>
-                                        <li><a href="extras-faqs.html">FAQs</a></li>
-                                        <li><a href="extras-pricing.html">Pricing</a></li>
-                                        <li><a href="extras-contacts.html">Contacts</a></li>
-                                    </ul>
-                                </li>
+                                
 
                             <?php endif; ?>
                             </ul>

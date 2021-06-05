@@ -19,7 +19,7 @@ include_once '../../config/auth-cek.php';
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="header-title m-t-0 m-b-20">Pengguna</h4>
+                        <h4 class="header-title m-t-0 m-b-20">Bangunan</h4>
                     </div>
                 </div>
 
@@ -27,7 +27,7 @@ include_once '../../config/auth-cek.php';
                     <ul class="nav nav-tabs tabs-bordered">
                         <li class="nav-item">
                             <a href="#tabel" data-toggle="tab" aria-expanded="false" class="nav-link active">
-                                Pengguna
+                                Bangunan
                             </a>
                         </li>
                         <li class="nav-item">
@@ -45,36 +45,46 @@ include_once '../../config/auth-cek.php';
                                     <!-- Tabel -->
                                     <div class="panel panel-primary panel-fill">
                                         <div class="panel-heading">
-                                            <h3 class="panel-title" style="color: white;">Pengguna</h3>
+                                            <h3 class="panel-title" style="color: white;">Bangunan</h3>
                                         </div>
                                         <div class="panel-body">
                                             <div class="row p-t-50">
                                                     <div class="col-12">
                                                         <div class="table-responsive">
-                                                            <table id="responsive-datatable" class="table table-bordered table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                                            <table id="key-table" class="table table-bordered" cellspacing="0" width="100%">
                                                                 <thead>
                                                                 <tr>
                                                                     <th>No</th>
-                                                                    <th>Nama Pengguna</th>
-                                                                    <th>Username</th>
-                                                                    <th>Password</th>
+                                                                    <th>Kode Bangunan</th>
+                                                                    <th>Nama Bangunan</th>
+                                                                    <th>Lokasi</th>
+                                                                    <th>Nilai Aset</th>
+                                                                    <th>Sumber Dana</th>
+                                                                    <th>Tanggal Pembuatan</th>
+                                                                    <th>Kondisi</th>
+                                                                    <th>Ukuran Luas Bangunan</th>
                                                                     <th style="text-align: center;"><span class="badge badge-primary"><i class="mdi mdi-cogs"></i></span></th>
                                                                 </tr>
                                                                 </thead>
                                                                 <?php 
                                                                 $no = 1;
-                                                                $data = $koneksi->query("SELECT * FROM user ORDER BY id_user ASC");
+                                                                $data = $koneksi->query("SELECT * FROM bangunan AS b LEFT JOIN sumberdana AS sd ON b.id_sumberdana = sd.id_sumberdana ORDER BY id_bangunan ASC");
                                                                 foreach ($data as $row) {  
                                                                 ?>
                                                                 <tbody>
                                                                 <tr>
                                                                     <td><?= $no++; ?></td>
-                                                                    <td><?= $row['nama_user']; ?></td>
-                                                                    <td><?= $row['username']; ?></td>
-                                                                    <td><?= $row['password']; ?></td>
+                                                                    <td><?= $row['kode_bangunan']; ?></td>
+                                                                    <td><?= $row['nama_bangunan']; ?></td>
+                                                                    <td><?= $row['lokasi']; ?></td>
+                                                                    <td><?= $row['nilai_aset']; ?></td>
+                                                                    <td><?= $row['nama_sumberdana']; ?></td>
+                                                                    <td><?= $row['tanggal_pembuatan']; ?></td>
+                                                                    <td><?= $row['kondisi']; ?></td>
+                                                                    <td><?= $row['ulb']; ?></td>
                                                                     <td style="text-align: center;">
-                                                                    <a href="update?id=<?= $row['id_user'] ?>"><span class="badge badge-success badge-lg"><i class="mdi mdi-briefcase-edit-outline"></i></span></a>
-                                                                    <a href="proses?id=<?= $row['id_user'] ?>"><span class="badge badge-danger badge-lg"><i class="mdi mdi-trash-can"></i></span></a>
+                                                                    <a href="update?id=<?= $row['id_bangunan'] ?>"><span class="badge badge-success badge-lg"><i class="mdi mdi-briefcase-edit-outline"></i></span></a>
+                                                                    <a href="proses?id=<?= $row['id_bangunan'] ?>"><span class="badge badge-danger badge-lg"><i class="mdi mdi-trash-can"></i></span></a>
                                                                     </td>
                                                                 </tr>
                                                                 </tbody>
@@ -100,30 +110,49 @@ include_once '../../config/auth-cek.php';
                                 <div class="panel-body">
                                     <form role="form" action="proses" method="POST" enctype="multipart/form-data">
                                         <div class="form-group">
-                                            <label for="nama_user">Nama Pengguna</label>
-                                            <input type="text"  id="nama_user" class="form-control" name="nama_user">
+                                            <label for="kode_bangunan">Kode Bangunan</label>
+                                            <input type="text"  id="kode_bangunan" class="form-control" name="kode_bangunan">
                                         </div>
                                         <div class="form-group">
-                                            <label for="username">Username</label>
-                                            <input type="text"  id="username" class="form-control" name="username">
+                                            <label for="nama_bangunan">Nama Bangunan</label>
+                                            <input type="text"  id="nama_bangunan" class="form-control" name="nama_bangunan">
                                         </div>
                                         <div class="form-group">
-                                            <label for="username">Password</label>
-                                            <div class="input-group">
-                                            <input type="password" class="form-control" name="password" id="pass" autocomplete="off" minlength="5" maxlength="10" required>
-                                                    <div class="input-group-append" id="btn_pass">
-                                                        <button type="button" class="btn btn-primary waves-effect waves-light w-sm" onclick="lihatpass('pass');" title="Tampilkan Password"><i class="mdi mdi-eye-circle"></i></button>
-                                                    </div>
-                                             </div>
-                                            <small class="form-text text-muted font-italic">*Password Minimal 5 Karakter dan Maksimal 10 Karakter</small>
+                                            <label for="lokasi">Lokasi</label>
+                                            <input type="text"  id="lokasi" class="form-control" name="lokasi">
                                         </div>
                                         <div class="form-group">
-                                            <label for="username">Role</label>
-                                            <select class="form-control" name="role" id="role" required>
-                                                    <option value="" disabled selected>--Pilih--</option>
-                                                    <option value="superadmin">Admin</option>
-                                                    <option value="public">Masyarakat</option>
+                                            <label for="nilai_aset">Nilai Aset</label>
+                                            <input type="text"  id="nilai_aset" class="form-control" name="nilai_aset">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sumberdana">Sumber Dana</label>
+                                            <select class="form control select2" name="id_sumberdana" id="id_sumberdana" data-placeholder="Pilih" style="width: 100%;" required>
+                                                    <option value=""></option>
+                                                    <?php
+                                                    $sd = $koneksi->query("SELECT * FROM sumberdana ORDER BY id_sumberdana DESC");
+                                                    foreach ($sd as $item) {
+                                                    ?>
+                                                        <option value="<?= $item['id_sumberdana'] ?>"><?= $item['nama_sumberdana'] ?></option>
+                                                    <?php } ?>
                                                 </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tanggal_pembuatan">Tanggal Pembuatan</label>
+                                            <div class="input-group">
+                                            <input type="date" class="form-control" name="tanggal_pembuatan">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                                        </div>
+                                                     </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="kondisi">Kondisi</label>
+                                            <input type="text"  id="kondisi" class="form-control" name="kondisi">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ulb">Ukuran Luas Bangunan</label>
+                                            <input type="text"  id="ulb" class="form-control" name="ulb">
                                         </div>
                                         
                                         <button class="btn btn-primary waves-effect waves-light w-md" name="tambah" type="submit">Simpan</button>
