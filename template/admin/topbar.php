@@ -60,6 +60,22 @@
                                 
 
                             <?php endif; ?>
+
+                            <?php if ($_SESSION['role'] == 'public') : ?>
+                                <li class="has-submenu">
+                                    <a href="index" class="<?= page_active('public') ? 'active' : '' ?>">
+                                        <span><i class="ti-home"></i></span><span> Dashboard </span> </a>
+                                    </li>
+
+                                <li class="has-submenu <?= page_active('barang') ? 'active' : '' ?>">
+                                    <a href="#"><span><i class="ti-files"></i></span><span> Peminjaman </span> </a>
+                                    <ul class="submenu">
+                                        <li><a href="<?= base_url('public/peminjaman') ?>">Peminjaman Barang</a></li>
+                                        <li><a href="<?= base_url('public/pengembalian') ?>">Pengembalian Barang</a></li>
+                                    </ul>
+                                </li>                          
+
+                            <?php endif; ?>
                             </ul>
                             <!-- End navigation menu -->
                         </div> <!-- end #navigation -->

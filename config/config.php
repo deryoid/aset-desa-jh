@@ -1,7 +1,7 @@
 <?php
 function base_url($url = null)
 {
-    $base_url = "http://localhost/aset-desa-jh/";
+    $base_url = "http://localhost/aset-desa-jh";
     if ($url != null) {
         return $base_url . "/" . $url;
     } else {
