@@ -52,7 +52,7 @@ include_once '../../config/auth-cek.php';
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="jumlah_stok"Stok</label>
+                                            <label for="jumlah_stok">Stok</label>
                                             <input type="number" id="jumlah_stok" class="form-control" readonly>
                                         </div>
                                         

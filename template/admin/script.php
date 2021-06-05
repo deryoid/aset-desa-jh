@@ -5,11 +5,11 @@
         <script src="<?= base_url() ?>/assets/js/jquery.slimscroll.js"></script>
 
         <!--Morris Chart-->
-        <script src="<?= base_url() ?>/assets/plugins/morris/morris.min.js"></script>
-        <script src="<?= base_url() ?>/assets/plugins/raphael/raphael-min.js"></script>
+        <!-- <script src="<?= base_url() ?>/assets/plugins/morris/morris.min.js"></script>
+        <script src="<?= base_url() ?>/assets/plugins/raphael/raphael-min.js"></script> -->
 
         <!-- Dashboard init -->
-        <script src="<?= base_url() ?>/assets/pages/jquery.dashboard.js"></script>
+        <!-- <script src="<?= base_url() ?>/assets/pages/jquery.dashboard.js"></script> -->
 
         <!-- Required datatable js -->
         <script src="<?= base_url() ?>/assets/plugins/datatables/jquery.dataTables.min.js"></script>
@@ -116,9 +116,9 @@
             });
 
     // FORMAT RUPIAH
-    $(".rupiah").mask("000.000.000.000", {
-        reverse: true
-    });
+    // $(".rupiah").mask("000.000.000.000", {
+    //     reverse: true
+    // });
 
     $(".delete").click(function() {
         let data = $(this).data("link");
