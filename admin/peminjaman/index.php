@@ -25,7 +25,7 @@ include_once '../../config/auth-cek.php';
                         <h4 class="header-title m-t-0 m-b-20">Peminjaman Barang</h4>
                     </div>
                 </div>
-                <a href="create" class="btn btn-primary"><i class="mdi mdi-plus-circle-multiple-outline"> Pinjam</i></a>
+                <!-- <a href="create" class="btn btn-primary"><i class="mdi mdi-plus-circle-multiple-outline"> Pinjam</i></a> -->
                 <div class="m-t-5">
                     <div class="tab-content">
                             <!-- Personal-Information -->
@@ -47,7 +47,6 @@ include_once '../../config/auth-cek.php';
                                                                     <th>Tanggal</th>
                                                                     <th>Status</th>
                                                                     <th style="text-align: center;"><span class="badge badge-info"><i class="mdi mdi-eye-circle"></i></span></th>
-                                                                    <th style="text-align: center;"><span class="badge badge-primary"><i class="mdi mdi-cogs"></i></span></th>
                                                                 </tr>
                                                                 </thead>
                                                                 <?php 
@@ -69,12 +68,7 @@ include_once '../../config/auth-cek.php';
                                                                     </td>
                                                                     <td style="text-align: center;"><span class="badge badge-warning badge-lg"><?= $row['status_pinjam'] ?></span></td>
                                                                     <td style="text-align: center;">
-                                                                    <a href="borrow?id=<?= $row['id_pinjam'] ?>"><span class="badge badge-info badge-lg"><i class="mdi mdi-eye-circle"></i> Lihat</span></a>
-                                                                    </td>
-                                                                    <td style="text-align: center;">
-                                                                    <a href="update?id=<?= $row['id_pinjam'] ?>"><span class="badge badge-success badge-lg"><i class="mdi mdi-pencil-outline"></i></span></a>
-                                                                    <a href="detail?id=<?= $row['id_pinjam'] ?>"><span class="badge badge-primary badge-lg"><i class="mdi mdi-ballot-outline"></i></span></a>
-                                                                    <a href="proses?id=<?= $row['id_pinjam'] ?>"><span class="badge badge-danger badge-lg"><i class="mdi mdi-trash-can"></i></span></a>
+                                                                    <a href="detail?id=<?= $row['id_pinjam'] ?>"><span class="badge badge-info badge-lg"><i class="mdi mdi-ballot-outline"></i> Action</span></a>
                                                                     </td>
                                                                 </tr>
                                                                 </tbody>

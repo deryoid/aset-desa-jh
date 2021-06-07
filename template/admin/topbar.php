@@ -56,6 +56,20 @@
 
                                     </ul>
                                 </li>
+                                <li class="has-submenu <?= page_active('transaksibarang') ? 'active' : '' ?>"">
+                                    <a href="#"><span><i class="ti-spray"></i></span><span> Barang </span> </a>
+                                    <ul class="submenu">
+                                        <li>
+                                            <a href="<?= base_url('admin/peminjaman') ?>">Peminjaman Barang</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('admin/pengembalian') ?>">Pengembalian Barang</a>
+                                        </li>
+                                        
+
+
+                                    </ul>
+                                </li>
 
                                 
 
