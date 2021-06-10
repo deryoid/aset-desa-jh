@@ -65,8 +65,12 @@
                                         <li>
                                             <a href="<?= base_url('admin/pengembalian') ?>">Pengembalian Barang</a>
                                         </li>
-                                        
-
+                                        <li>
+                                            <a href="<?= base_url('admin/perbaikan') ?>">Perbaikan Barang</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('admin/pemusnahan') ?>">Pemusnahan Barang</a>
+                                        </li>
 
                                     </ul>
                                 </li>
