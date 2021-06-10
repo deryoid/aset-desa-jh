@@ -3,8 +3,6 @@ require_once '../../config/config.php';
 include_once '../../config/auth-cek.php';
 ?>
 
-
-
 <!DOCTYPE html>
 <html>
 <?php include_once '../../template/admin/head.php'; ?>
@@ -22,16 +20,16 @@ include_once '../../config/auth-cek.php';
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="header-title m-t-0 m-b-20">Peminjaman Barang</h4>
+                        <h4 class="header-title m-t-0 m-b-20">Pengembalian Barang</h4>
                     </div>
                 </div>
-                <a href="create" class="btn btn-primary"><i class="mdi mdi-plus-circle-multiple-outline"> Pinjam</i></a>
+                <!-- <a href="create" class="btn btn-primary"><i class="mdi mdi-plus-circle-multiple-outline"> Pinjam</i></a> -->
                 <div class="m-t-5">
                     <div class="tab-content">
                             <!-- Personal-Information -->
                             <div class="panel panel-primary panel-fill">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title" style="color: white;">Peminjaman Barang</h3>
+                                    <h3 class="panel-title" style="color: white;">Pengembalian Barang</h3>
                                 </div>
                                 <div class="panel-body">
 
@@ -45,14 +43,13 @@ include_once '../../config/auth-cek.php';
                                                                     <th>Peminjaman</th>
                                                                     <th>Keperluan</th>
                                                                     <th>Tanggal</th>
-                                                                    <th>Status</th>
                                                                     <th style="text-align: center;"><span class="badge badge-primary"><i class="mdi mdi-eye-circle"></i></span></th>
                                                                     <th style="text-align: center;"><span class="badge badge-primary"><i class="mdi mdi-cogs"></i></span></th>
                                                                 </tr>
                                                                 </thead>
                                                                 <?php 
                                                                 $no = 1;
-                                                                $data = $koneksi->query("SELECT * FROM pinjam AS p LEFT JOIN user AS u ON p.id_user = u.id_user ORDER BY id_pinjam DESC");
+                                                                $data = $koneksi->query("SELECT * FROM pinjam AS p LEFT JOIN user AS u ON p.id_user = u.id_user WHERE p.status_pinjam = 'Disetujui'");
                                                                 foreach ($data as $row) {  
                                                                 ?>
                                                                 <tbody>
@@ -67,26 +64,24 @@ include_once '../../config/auth-cek.php';
                                                                     Tanggal Pinjam :<?= $row['tanggal_pinjam']; ?><br>
                                                                     Tanggal Kembali :<?= $row['tanggal_kembali']; ?>
                                                                     </td>
+                                                                    
                                                                     <td style="text-align: center;">
-                                                                    <?php if ($row['status_pinjam'] == 'Menunggu'){ ?>
-                                                                        <span class="badge badge-warning badge-lg"><?= $row['status_pinjam'] ?></span>
-                                                                    <?php }elseif ($row['status_pinjam'] == 'Disetujui'){ ?>
-                                                                        <span class="badge badge-success badge-lg"><?= $row['status_pinjam'] ?></span>
+                                                                    <?php if ($row['status_kembali'] == 'Ajukan Pengembalian'){ ?>
+                                                                    <span class="badge badge-info badge-lg"><i class="mdi mdi-check-decagram"></i> Ajukan Pengembalian</span><br>
+                                                                    <?php }elseif ($row['status_kembali'] == 'Batalkan Pengembalian'){ ?>
+                                                                    <span class="badge badge-danger badge-lg"><i class="mdi mdi-close-octagon">Batalkan Pengembalian</i></span>
+                                                                    <?php }elseif ($row['status_kembali'] == 'Pengembalian Disetujui'){ ?>
+                                                                    <span class="badge badge-success badge-lg"><i class="mdi mdi-check-decagram">Pengembalian Disetujui</i></span>
+                                                                    <?php }elseif ($row['status_kembali'] == 'Pengembalian Ditolak'){ ?>
+                                                                    <span class="badge badge-danger badge-lg"><i class="mdi mdi-close-octagon">Pengembalian Ditolak</i></span>
+                                                                    <?php }?>
+                                                                   </td>
+                                                                   <td style="text-align: center;">
+                                                                   <?php if ($row['status_kembali'] == 'Pengembalian Disetujui'){ ?>
+                                                                    <a href="view?id=<?= $row['id_pinjam'] ?>" ><span class="badge badge-white badge-lg"><i class="mdi mdi-eye"></i> Lihat</span></a>
                                                                     <?php }else{ ?>
-                                                                        <span class="badge badge-danger badge-lg"><?= $row['status_pinjam'] ?></span>
-                                                                    <?php }?>
-                                                                    </td>
-                                                                    <td style="text-align: center;">
-                                                                    <a href="view?id=<?= $row['id_pinjam'] ?>" ><span class="badge badge-info badge-lg"><i class="mdi mdi-eye-circle"></i> Lihat</span></a>
-                                                                    </td>
-                                                                    <td style="text-align: center;">
-                                                                    <?php 
-                                                                    if ($row['status_pinjam'] != 'Disetujui'){
-                                                                    ?>
-                                                                    <a href="update?id=<?= $row['id_pinjam'] ?>"><span class="badge badge-success badge-lg"><i class="mdi mdi-pencil-outline"></i></span></a>
-                                                                    <a href="detail?id=<?= $row['id_pinjam'] ?>"><span class="badge badge-primary badge-lg"><i class="mdi mdi-ballot-outline"></i></span></a>
-                                                                    <a href="proses?id=<?= $row['id_pinjam'] ?>"><span class="badge badge-danger badge-lg"><i class="mdi mdi-trash-can"></i></span></a>
-                                                                    <?php }?>
+                                                                    <a href="view?id=<?= $row['id_pinjam'] ?>" ><span class="badge badge-white badge-lg"><i class="mdi mdi-pencil-outline"></i> Lihat & Verifikasi </span></a>
+                                                                    <?php } ?>
                                                                     </td>
                                                                 </tr>
                                                                 </tbody>

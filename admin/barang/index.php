@@ -23,7 +23,7 @@ include_once '../../config/auth-cek.php';
                     </div>
                 </div>
 
-                <div class="m-t-30">
+                <div class="m-t-5">
                     <ul class="nav nav-tabs tabs-bordered">
                         <li class="nav-item">
                             <a href="#tabel" data-toggle="tab" aria-expanded="false" class="nav-link active">
@@ -48,7 +48,7 @@ include_once '../../config/auth-cek.php';
                                             <h3 class="panel-title" style="color: white;">Barang</h3>
                                         </div>
                                         <div class="panel-body">
-                                            <div class="row p-t-50">
+                                            <div class="row p-t-5">
                                                     <div class="col-12">
                                                         <div class="table-responsive">
                                                             <table id="key-table" class="table table-bordered" cellspacing="0" width="100%">
@@ -68,7 +68,7 @@ include_once '../../config/auth-cek.php';
                                                                 </thead>
                                                                 <?php 
                                                                 $no = 1;
-                                                                $data = $koneksi->query("SELECT * FROM barang AS br LEFT JOIN sumberdana AS sd ON br.id_sumberdana = sd.id_sumberdana ORDER BY id_barang ASC");
+                                                                $data = $koneksi->query("SELECT * FROM barang AS br LEFT JOIN sumberdana AS sd ON br.id_sumberdana = sd.id_sumberdana WHERE br.kondisi = 'Baik'");
                                                                 foreach ($data as $row) {  
                                                                 ?>
                                                                 <tbody>
@@ -148,7 +148,7 @@ include_once '../../config/auth-cek.php';
                                         </div>
                                         <div class="form-group">
                                             <label for="kondisi">Kondisi</label>
-                                            <input type="text"  id="kondisi" class="form-control" name="kondisi">
+                                            <input type="text"  id="kondisi" class="form-control" name="kondisi" value="Baik" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label for="jumlah_stok">Jumlah Stok</label>

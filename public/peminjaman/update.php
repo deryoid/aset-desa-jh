@@ -3,8 +3,10 @@ require_once '../../config/config.php';
 include_once '../../config/auth-cek.php';
 ?>
 
+<?php
+$id   = $_GET['id'];
+$data = $koneksi->query("SELECT * FROM pinjam WHERE id_pinjam = '$id'")->fetch_array();
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -36,42 +38,48 @@ include_once '../../config/auth-cek.php';
                                 </div>
                                 <div class="panel-body">
                                 <form role="form" action="proses" method="POST" enctype="multipart/form-data">
-                                <!-- <input type="hidden" name="id_barang" value="<?= $data['id_barang'] ?>"> -->
-                                
+                                <input type="hidden" name="id_pinjam" value="<?= $data['id_pinjam']; ?>">
                                         <div class="form-group">
-                                            <label for="kode_barang">Barang</label>
-                                            <select class="form control select2" name="id_barang" id="id_barang" data-placeholder="Pilih" style="width: 100%;" required>
-                                                    <option value=""></option>
-                                                    <?php
-                                                    $sd = $koneksi->query("SELECT * FROM barang ORDER BY id_barang DESC");
-                                                    foreach ($sd as $item) {
-                                                    ?>
-                                                        <option value="<?= $item['id_barang'] ?>"><?= "(".$item['kode_barang'].")" ?> <?= $item['nama_barang'] ?>| Stok : <?= $item['jumlah_stok'] ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="jumlah_stok">Stok</label>
-                                            <input type="number" id="jumlah_stok" class="form-control" readonly>
+                                            <label for="jumlah_stok">Nama </label>
+                                            <input type="text" id="jumlah_stok" value="<?= $_SESSION['nama_user']; ?>" class="form-control" readonly>
                                         </div>
                                         
 
                                         <div class="form-group">
-                                            <label for="jumlah_pinjam">Jumlah Pinjam</label>
-                                            <input type="number"  id="jumlah_pinjam" onkeyup="validstok()" class="form-control" name="jumlah_pinjam">
+                                            <label for="keperluan">Keperluan</label>
+                                            <textarea type="text"  id="keperluan" class="form-control" name="keperluan"><?= $data['keperluan']; ?></textarea>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="kontak">Kontak </label>
+                                            <input type="number" id="kontak" name="kontak" placeholder="Nomor Telp/Whatsapp" class="form-control" value="<?= $data['kontak']; ?>">
+                                        </div>
+
                                         <div class="form-group">
                                             <label for="tanggal_pinjam">Tanggal Pinjam</label>
                                             <div class="input-group">
-                                            <input type="date" class="form-control" name="tanggal_pinjam" value="<?= date('Y-m-d') ?>" readonly>
+                                            <input type="date" class="form-control" name="tanggal_pinjam" value="<?= $data['tanggal_pinjam']; ?>">
                                                         <div class="input-group-append">
                                                             <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                                                         </div>
                                                      </div>
                                         </div>
+
+                                        
+                                        <div class="form-group">
+                                            <label for="tanggal_kembali">Tanggal Kembali</label>
+                                            <div class="input-group">
+                                            <input type="date" class="form-control" name="tanggal_kembali" value="<?= $data['tanggal_kembali']; ?>">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                                        </div>
+                                                     </div>
+                                        </div>
+
+
                                        
-                                        <button class="btn btn-primary waves-effect waves-light w-md" name="edit" type="submit">Ubah</button>
+                                        <button class="btn btn-primary waves-effect waves-light w-md" name="edit" type="submit">Update Pinjam</button>
+                                        <a href="index" class="btn btn-outline-info"> Kembali</a>
                                  </form>
 
                                 </div>

@@ -18,7 +18,8 @@ if (isset($_POST['tambah'])) {
             '$tanggal_pinjam', 
             '$tanggal_kembali', 
             '$id_user', 
-            'Menunggu'
+            'Menunggu',
+            NULL
             )");
             //  var_dump($submit, $koneksi->error); die;
         if ($submit) {
@@ -29,27 +30,20 @@ if (isset($_POST['tambah'])) {
 
     // Edit
     if (isset($_POST['edit'])) {
-        $id_barang = $_POST['id_barang'];
-        $kode_barang = $_POST['kode_barang'];
-        $nama_barang = $_POST['nama_barang'];
-        $tipe        = $_POST['tipe'];
-        $nilai_aset    = $_POST['nilai_aset'];
-        $id_sumberdana = $_POST['id_sumberdana'];
-        $tanggal_perolehan      = $_POST['tanggal_perolehan'];
-        $kondisi       = $_POST['kondisi'];
-        $jumlah_stok           = $_POST['jumlah_stok'];
+        $id_pinjam          = $_POST['id_pinjam'];
+        $keperluan          = $_POST['keperluan'];
+        $kontak             = $_POST['kontak'];
+        $tanggal_pinjam     = $_POST['tanggal_pinjam'];
+        $tanggal_kembali    = $_POST['tanggal_kembali'];
+        // $id_user            = $_SESSION['id_user'];
 
-        $submit = $koneksi->query("UPDATE barang SET 
-        kode_barang = '$kode_barang', 
-        nama_barang = '$nama_barang', 
-        tipe = '$tipe', 
-        nilai_aset = '$nilai_aset', 
-        id_sumberdana = '$id_sumberdana', 
-        tanggal_perolehan = '$tanggal_perolehan', 
-        kondisi = '$kondisi', 
-        jumlah_stok = '$jumlah_stok' 
+        $submit = $koneksi->query("UPDATE pinjam SET 
+        keperluan = '$keperluan', 
+        kontak = '$kontak', 
+        tanggal_pinjam = '$tanggal_pinjam', 
+        tanggal_kembali = '$tanggal_kembali'
         WHERE 
-        id_barang = '$id_barang'");
+        id_pinjam = '$id_pinjam'");
 //  var_dump($submit, $koneksi->error); die;
         if ($submit) {
             $_SESSION['alert'] = "Berubah";

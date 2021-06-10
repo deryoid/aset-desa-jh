@@ -91,7 +91,7 @@ $data = $koneksi->query("SELECT * FROM pinjam WHERE id_pinjam = '$id'")->fetch_a
                                                                 LEFT JOIN pinjam AS p 
                                                                 ON dp.id_pinjam = p.id_pinjam 
                                                                 LEFT JOIN barang AS bg
-                                                                ON dp.id_barang = bg.id_barang");
+                                                                ON dp.id_barang = bg.id_barang WHERE dp.id_pinjam = '$id'");
                                                                 foreach ($data as $row) {  
                                                                 ?>
                                                                 <tbody>

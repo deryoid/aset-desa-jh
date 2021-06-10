@@ -19,7 +19,7 @@ include_once '../../config/auth-cek.php';
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="header-title m-t-0 m-b-20">Bangunan</h4>
+                        <h4 class="header-title m-t-0 m-b-20">Tanah</h4>
                     </div>
                 </div>
 
@@ -27,7 +27,7 @@ include_once '../../config/auth-cek.php';
                     <ul class="nav nav-tabs tabs-bordered">
                         <li class="nav-item">
                             <a href="#tabel" data-toggle="tab" aria-expanded="false" class="nav-link active">
-                                Bangunan
+                                Tanah
                             </a>
                         </li>
                         <li class="nav-item">
@@ -45,7 +45,7 @@ include_once '../../config/auth-cek.php';
                                     <!-- Tabel -->
                                     <div class="panel panel-primary panel-fill">
                                         <div class="panel-heading">
-                                            <h3 class="panel-title" style="color: white;">Bangunan</h3>
+                                            <h3 class="panel-title" style="color: white;">Tanah</h3>
                                         </div>
                                         <div class="panel-body">
                                             <div class="row p-t-5">
@@ -55,36 +55,34 @@ include_once '../../config/auth-cek.php';
                                                                 <thead>
                                                                 <tr>
                                                                     <th>No</th>
-                                                                    <th>Kode Bangunan</th>
-                                                                    <th>Nama Bangunan</th>
+                                                                    <th>Kode Tanah</th>
+                                                                    <th>Nama Pemilik Tanah</th>
                                                                     <th>Lokasi</th>
                                                                     <th>Nilai Aset</th>
                                                                     <th>Sumber Dana</th>
                                                                     <th>Tanggal Pembuatan</th>
-                                                                    <th>Kondisi</th>
-                                                                    <th>Ukuran Luas Bangunan</th>
+                                                                    <th>Ukuran Luas tanah</th>
                                                                     <th style="text-align: center;"><span class="badge badge-primary"><i class="mdi mdi-cogs"></i></span></th>
                                                                 </tr>
                                                                 </thead>
                                                                 <?php 
                                                                 $no = 1;
-                                                                $data = $koneksi->query("SELECT * FROM bangunan AS b LEFT JOIN sumberdana AS sd ON b.id_sumberdana = sd.id_sumberdana ORDER BY id_bangunan ASC");
+                                                                $data = $koneksi->query("SELECT * FROM tanah AS b LEFT JOIN sumberdana AS sd ON b.id_sumberdana = sd.id_sumberdana ORDER BY id_tanah ASC");
                                                                 foreach ($data as $row) {  
                                                                 ?>
                                                                 <tbody>
                                                                 <tr>
                                                                     <td><?= $no++; ?></td>
-                                                                    <td><?= $row['kode_bangunan']; ?></td>
-                                                                    <td><?= $row['nama_bangunan']; ?></td>
+                                                                    <td><?= $row['kode_tanah']; ?></td>
+                                                                    <td><?= $row['nama_tanah']; ?></td>
                                                                     <td><?= $row['lokasi']; ?></td>
                                                                     <td><?= $row['nilai_aset']; ?></td>
                                                                     <td><?= $row['nama_sumberdana']; ?></td>
-                                                                    <td><?= $row['tanggal_pembuatan']; ?></td>
-                                                                    <td><?= $row['kondisi']; ?></td>
-                                                                    <td><?= $row['ulb']; ?></td>
+                                                                    <td><?= $row['tanggal_perolehan']; ?></td>
+                                                                    <td><?= $row['ult']; ?></td>
                                                                     <td style="text-align: center;">
-                                                                    <a href="update?id=<?= $row['id_bangunan'] ?>"><span class="badge badge-success badge-lg"><i class="mdi mdi-briefcase-edit-outline"></i></span></a>
-                                                                    <a href="proses?id=<?= $row['id_bangunan'] ?>"><span class="badge badge-danger badge-lg"><i class="mdi mdi-trash-can"></i></span></a>
+                                                                    <a href="update?id=<?= $row['id_tanah'] ?>"><span class="badge badge-success badge-lg"><i class="mdi mdi-briefcase-edit-outline"></i></span></a>
+                                                                    <a href="proses?id=<?= $row['id_tanah'] ?>"><span class="badge badge-danger badge-lg"><i class="mdi mdi-trash-can"></i></span></a>
                                                                     </td>
                                                                 </tr>
                                                                 </tbody>
@@ -110,12 +108,12 @@ include_once '../../config/auth-cek.php';
                                 <div class="panel-body">
                                     <form role="form" action="proses" method="POST" enctype="multipart/form-data">
                                         <div class="form-group">
-                                            <label for="kode_bangunan">Kode Bangunan</label>
-                                            <input type="text"  id="kode_bangunan" class="form-control" name="kode_bangunan">
+                                            <label for="kode_tanah">Kode tanah</label>
+                                            <input type="text"  id="kode_tanah" class="form-control" name="kode_tanah">
                                         </div>
                                         <div class="form-group">
-                                            <label for="nama_bangunan">Nama Bangunan</label>
-                                            <input type="text"  id="nama_bangunan" class="form-control" name="nama_bangunan">
+                                            <label for="nama_tanah">Nama Pemilik Tanah</label>
+                                            <input type="text"  id="nama_tanah" class="form-control" name="nama_tanah">
                                         </div>
                                         <div class="form-group">
                                             <label for="lokasi">Lokasi</label>
@@ -138,21 +136,17 @@ include_once '../../config/auth-cek.php';
                                                 </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="tanggal_pembuatan">Tanggal Pembuatan</label>
+                                            <label for="tanggal_perolehan">Tanggal Perolehan</label>
                                             <div class="input-group">
-                                            <input type="date" class="form-control" name="tanggal_pembuatan">
+                                            <input type="date" class="form-control" name="tanggal_perolehan">
                                                         <div class="input-group-append">
                                                             <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                                                         </div>
                                                      </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="kondisi">Kondisi</label>
-                                            <input type="text"  id="kondisi" class="form-control" name="kondisi">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="ulb">Ukuran Luas Bangunan</label>
-                                            <input type="text"  id="ulb" class="form-control" name="ulb">
+                                            <label for="ult">Ukuran Luas tanah</label>
+                                            <input type="text"  id="ult" class="form-control" name="ult">
                                         </div>
                                         
                                         <button class="btn btn-primary waves-effect waves-light w-md" name="tambah" type="submit">Simpan</button>

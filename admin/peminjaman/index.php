@@ -103,6 +103,56 @@ include_once '../../config/auth-cek.php';
     </body>
 </html>
 
+<?php
+if (isset($_SESSION['alert'])) {
+    if ($_SESSION['alert'] == "Berhasil") {
+        echo "<script>
+        swal(
+            {
+                title: 'Berhasil',
+                text: 'Tekan Tombol Ok Untuk Melanjutkan!',
+                type: 'success',
+            }
+        )
+        </script>";
+        unset($_SESSION['alert']);
+    }elseif ($_SESSION['alert'] == "Gagal") {
+        echo "<script>
+        swal(
+            {
+                title: 'Gagal',
+                text: 'Tekan Tombol Ok Untuk Melanjutkan!',
+                type: 'error',
+            }
+        )
+        </script>";
+        unset($_SESSION['alert']);
+    }elseif ($_SESSION['alert'] == "Berubah") {
+        echo "<script>
+        swal(
+            {
+                title: 'Berhasil Diubah',
+                text: 'Tekan Tombol Ok Untuk Melanjutkan!',
+                type: 'success',   
+            }
+        )
+        </script>";
+        unset($_SESSION['alert']);
+    }elseif ($_SESSION['alert'] == "Hapus") {
+        echo "<script>
+        swal(
+            {
+                title: 'Berhasil Dihapus',
+                text: 'Tekan Tombol Ok Untuk Melanjutkan!',
+                type: 'warning',   
+            }
+        )
+        </script>";
+        unset($_SESSION['alert']);
+    }
+}
+?>
+
 <script>
 
 $('#id_barang').change(function(){

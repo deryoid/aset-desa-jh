@@ -25,11 +25,11 @@ $data = $koneksi->query("SELECT * FROM bangunan WHERE id_bangunan = '$id'")->fet
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="header-title m-t-0 m-b-20">Sumber Dana</h4>
+                        <h4 class="header-title m-t-0 m-b-20">Bangunan</h4>
                     </div>
                 </div>
 
-                <div class="m-t-30">
+                <div class="m-t-5">
                     <div class="tab-content">
                             <!-- Personal-Information -->
                             <div class="panel panel-primary panel-fill">
