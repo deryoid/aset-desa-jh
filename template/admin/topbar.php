@@ -26,11 +26,11 @@
                             <?php if ($_SESSION['role'] == 'superadmin') : ?>
                                 <li class="has-submenu">
                                     <a href="index" class="<?= page_active('admin') ? 'active' : '' ?>">
-                                        <span><i class="ti-home"></i></span><span> Dashboard </span> </a>
+                                        <span><i class="mdi mdi-desktop-mac-dashboard"></i></span><span> Dashboard </span> </a>
                                     </li>
 
                                 <li class="has-submenu <?= page_active('sumberdana') ? 'active' : '' ?>">
-                                    <a href="#"><span><i class="ti-files"></i></span><span> Data Master </span> </a>
+                                    <a href="#"><span><i class="mdi mdi-briefcase-edit-outline"></i></span><span> Data Master </span> </a>
                                     <ul class="submenu">
                                         <li><a href="<?= base_url('admin/sumberdana') ?>">Sumber Dana</a></li>
                                         <li><a href="<?= base_url('admin/user') ?>">Pengguna</a></li>
@@ -38,7 +38,7 @@
                                 </li>
 
                                 <li class="has-submenu <?= page_active('aset') ? 'active' : '' ?>"">
-                                    <a href="#"><span><i class="ti-spray"></i></span><span> Data Aset </span> </a>
+                                    <a href="#"><span><i class="mdi mdi-table-edit"></i></span><span> Data Aset </span> </a>
                                     <ul class="submenu">
                                         <li>
                                             <a href="<?= base_url('admin/bangunan') ?>">Bangunan</a>
@@ -57,7 +57,7 @@
                                     </ul>
                                 </li>
                                 <li class="has-submenu <?= page_active('transaksibarang') ? 'active' : '' ?>"">
-                                    <a href="#"><span><i class="ti-spray"></i></span><span> Barang </span> </a>
+                                    <a href="#"><span><i class="mdi mdi-view-list"></i></span><span> Barang </span> </a>
                                     <ul class="submenu">
                                         <li>
                                             <a href="<?= base_url('admin/peminjaman') ?>">Peminjaman Barang</a>
@@ -71,6 +71,37 @@
                                         <li>
                                             <a href="<?= base_url('admin/pemusnahan') ?>">Pemusnahan Barang</a>
                                         </li>
+
+                                    </ul>
+                                </li>
+                                <li class="has-submenu <?= page_active('laporan') ? 'active' : '' ?>"">
+                                    <a href="#"><span><i class="mdi mdi-printer-settings"></i></span><span> Laporan </span> </a>
+                                    <ul class="submenu">
+                                        <li>
+                                            <a href="<?= base_url('admin/laporan/lap-asetbangunan') ?>" target="_blank">Aset Bangunan</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('admin/laporan/lap-asetbarang') ?>" target="_blank">Aset Barang</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('admin/laporan/lap-asetjalan') ?>" target="_blank">Aset Jalan</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('admin/laporan/lap-asettanah') ?>" target="_blank">Aset Tanah</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('admin/laporan/lap-pinjambarang') ?>" target="_blank">Peminjaman Barang</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('admin/laporan/lap-kembalibarang') ?>" target="_blank">Pengembalian Barang</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('admin/laporan/lap-musnahbarang') ?>" target="_blank">Pemusnahan Barang</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('admin/laporan/lap-perbaikanbarang') ?>" target="_blank">Perbaikan Barang</a>
+                                        </li>
+                                       
 
                                     </ul>
                                 </li>

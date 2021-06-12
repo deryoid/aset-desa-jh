@@ -1,5 +1,9 @@
 <?php
 require_once 'config/config.php';
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,7 +30,7 @@ require_once 'config/config.php';
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="card-box">
-                            <a href="#" class="btn btn-sm btn-default pull-right">View</a>
+                            <!-- <a href="#" class="btn btn-sm btn-default pull-right">View</a> -->
                             <h6 class="text-muted font-13 m-t-0 text-uppercase">Product Sold</h6>
                             <h3 class="m-b-20 mt-3"><span>1,890</span></h3>
                             <div class="progress progress-sm m-0">
@@ -39,7 +43,7 @@ require_once 'config/config.php';
 
                     <div class="col-sm-4">
                         <div class="card-box">
-                            <a href="#" class="btn btn-sm btn-default pull-right">View</a>
+                            <!-- <a href="#" class="btn btn-sm btn-default pull-right">View</a> -->
                             <h6 class="text-muted font-13 m-t-0 text-uppercase">Average Price</h6>
                             <h3 class="m-b-20 mt-3">$<span>22.56</span></h3>
                             <div class="progress progress-sm m-0">
@@ -52,7 +56,7 @@ require_once 'config/config.php';
 
                     <div class="col-sm-4">
                         <div class="card-box">
-                            <a href="#" class="btn btn-sm btn-default pull-right">View</a>
+                            <!-- <a href="#" class="btn btn-sm btn-default pull-right">View</a> -->
                             <h6 class="text-muted m-t-0 font-13 text-uppercase">Orders</h6>
                             <h3 class="m-b-20 mt-3">9,754</h3>
                             <div class="progress progress-sm m-0">
@@ -69,7 +73,7 @@ require_once 'config/config.php';
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="card-box">
-                            <a href="#" class="btn btn-sm btn-default pull-right">View</a>
+                            <!-- <a href="#" class="btn btn-sm btn-default pull-right">View</a> -->
                             <h6 class="text-muted font-13 m-t-0 text-uppercase">Product Sold</h6>
                             <h3 class="m-b-20 mt-3"><span>1,890</span></h3>
                             <div class="progress progress-sm m-0">
@@ -82,7 +86,7 @@ require_once 'config/config.php';
 
                     <div class="col-sm-4">
                         <div class="card-box">
-                            <a href="#" class="btn btn-sm btn-default pull-right">View</a>
+                            <!-- <a href="#" class="btn btn-sm btn-default pull-right">View</a> -->
                             <h6 class="text-muted font-13 m-t-0 text-uppercase">Average Price</h6>
                             <h3 class="m-b-20 mt-3">$<span>22.56</span></h3>
                             <div class="progress progress-sm m-0">
@@ -95,7 +99,7 @@ require_once 'config/config.php';
 
                     <div class="col-sm-4">
                         <div class="card-box">
-                            <a href="#" class="btn btn-sm btn-default pull-right">View</a>
+                            <!-- <a href="#" class="btn btn-sm btn-default pull-right">View</a> -->
                             <h6 class="text-muted m-t-0 font-13 text-uppercase">Orders</h6>
                             <h3 class="m-b-20 mt-3">9,754</h3>
                             <div class="progress progress-sm m-0">
