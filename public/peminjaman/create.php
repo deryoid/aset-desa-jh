@@ -26,7 +26,7 @@ include_once '../../config/auth-cek.php';
                     </div>
                 </div>
 
-                <div class="m-t-30">
+                <div class="m-t-5">
                     <div class="tab-content">
                             <!-- Personal-Information -->
                             <div class="panel panel-primary panel-fill">
