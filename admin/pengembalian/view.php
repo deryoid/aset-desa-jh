@@ -4,7 +4,7 @@ include_once '../../config/auth-cek.php';
 ?>
 <?php
 $id   = $_GET['id'];
-$data = $koneksi->query("SELECT * FROM pinjam WHERE id_pinjam = '$id'")->fetch_array();
+$data = $koneksi->query("SELECT * FROM pinjam AS p LEFT JOIN user AS u ON p.id_user = u.id_user WHERE p.id_pinjam = '$id'")->fetch_array();
 ?>
 
 
@@ -60,7 +60,7 @@ $data = $koneksi->query("SELECT * FROM pinjam WHERE id_pinjam = '$id'")->fetch_a
                                         <div class="m-b-20">
                                                 <strong>Full Name</strong>
                                                 <br>
-                                                <p class="text-muted"><?= $_SESSION['nama_user']; ?></p>
+                                                <p class="text-muted"><?= $data['nama_user']; ?></p>
                                             </div>
                                             <div class="m-b-20">
                                                 <strong>Keperluan</strong>

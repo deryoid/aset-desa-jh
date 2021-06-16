@@ -56,7 +56,7 @@ include_once '../../config/auth-cek.php';
                                                                 <tr>
                                                                     <td><?= $no++; ?></td>
                                                                     <td>
-                                                                    Nama : <?= $_SESSION['id_user']; ?><br>
+                                                                    Nama : <?= $row['nama_user']; ?><br>
                                                                     Kontak : <?= $row['kontak']; ?><br>
                                                                     </td>
                                                                     <td><?= $row['keperluan']; ?></td>

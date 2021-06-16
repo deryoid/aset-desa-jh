@@ -135,7 +135,7 @@ include_once '../config/auth-cek.php';
                     <div class="col-sm-4">
                         <div class="card-box">
                             <!-- <a href="#" class="btn btn-sm btn-default pull-right">View</a> -->
-                            <h6 class="text-muted m-t-0 font-13 text-uppercase">Orders</h6>
+                            <h6 class="text-muted m-t-0 font-13 text-uppercase">Perbaikan</h6>
                             <?php 
                             $data7 = $koneksi->query("SELECT * FROM perbaikan");
                             $jumlah7 = mysqli_num_rows($data7);

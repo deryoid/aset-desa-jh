@@ -15,8 +15,8 @@ if (isset($_POST['tambah'])) {
         }else{
 
         $submit = $koneksi->query("INSERT INTO sumberdana VALUES (NULL, '$nama_sumberdana', '$keterangan')");
-        var_dump($submit);
-        die();
+        // var_dump($submit);
+        // die();
         if ($submit) {
             $_SESSION['alert'] = "Berhasil";
             header("location: ../sumberdana", true, 301);
