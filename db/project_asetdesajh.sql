@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 12 Jun 2021 pada 07.46
--- Versi server: 5.7.24
--- Versi PHP: 7.4.12
+-- Generation Time: Jun 16, 2021 at 04:08 AM
+-- Server version: 5.7.24
+-- PHP Version: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bangunan`
+-- Table structure for table `bangunan`
 --
 
 CREATE TABLE `bangunan` (
@@ -40,7 +40,7 @@ CREATE TABLE `bangunan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `bangunan`
+-- Dumping data for table `bangunan`
 --
 
 INSERT INTO `bangunan` (`id_bangunan`, `kode_bangunan`, `nama_bangunan`, `lokasi`, `nilai_aset`, `id_sumberdana`, `tanggal_pembuatan`, `kondisi`, `ulb`) VALUES
@@ -50,7 +50,7 @@ INSERT INTO `bangunan` (`id_bangunan`, `kode_bangunan`, `nama_bangunan`, `lokasi
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `barang`
+-- Table structure for table `barang`
 --
 
 CREATE TABLE `barang` (
@@ -66,17 +66,18 @@ CREATE TABLE `barang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `barang`
+-- Dumping data for table `barang`
 --
 
 INSERT INTO `barang` (`id_barang`, `kode_barang`, `nama_barang`, `tipe`, `nilai_aset`, `id_sumberdana`, `tanggal_perolehan`, `kondisi`, `jumlah_stok`) VALUES
 (2, 'BRG01', 'Laptop', 'Elektronik', 'Rp. 7.000.000', 2, '2021-06-07', 'Baik', '21'),
-(3, 'BRG02', 'TV', 'Elektronik', 'Rp. 2.000.000', 1, '2021-06-07', 'Baik', '11');
+(3, 'BRG02', 'TV', 'Elektronik', 'Rp. 2.000.000', 1, '2021-06-07', 'Baik', '8'),
+(4, 'BRG03', 'Kursi', 'Plastik', 'Rp. 20.000.000', 14, '2021-06-16', 'Baik', '150');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_pinjam`
+-- Table structure for table `detail_pinjam`
 --
 
 CREATE TABLE `detail_pinjam` (
@@ -87,18 +88,17 @@ CREATE TABLE `detail_pinjam` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `detail_pinjam`
+-- Dumping data for table `detail_pinjam`
 --
 
 INSERT INTO `detail_pinjam` (`id_detail`, `id_pinjam`, `id_barang`, `jumlah_pinjam`) VALUES
-(3, 2, 2, '3'),
-(6, 2, 3, '2'),
-(7, 14, 2, '1');
+(1, 2, 2, '3'),
+(2, 2, 4, '50');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jalan`
+-- Table structure for table `jalan`
 --
 
 CREATE TABLE `jalan` (
@@ -114,7 +114,7 @@ CREATE TABLE `jalan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `jalan`
+-- Dumping data for table `jalan`
 --
 
 INSERT INTO `jalan` (`id_jalan`, `kode_jalan`, `nama_jalan`, `lokasi`, `nilai_aset`, `id_sumberdana`, `tanggal_pembuatan`, `kondisi`, `ulj`) VALUES
@@ -124,7 +124,7 @@ INSERT INTO `jalan` (`id_jalan`, `kode_jalan`, `nama_jalan`, `lokasi`, `nilai_as
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pemusnahan`
+-- Table structure for table `pemusnahan`
 --
 
 CREATE TABLE `pemusnahan` (
@@ -134,17 +134,10 @@ CREATE TABLE `pemusnahan` (
   `tgl_pemusnahan` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `pemusnahan`
---
-
-INSERT INTO `pemusnahan` (`id_pemusnahan`, `id_barang`, `jumlah_musnah`, `tgl_pemusnahan`) VALUES
-(10, 3, '2', '2021-06-10');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `perbaikan`
+-- Table structure for table `perbaikan`
 --
 
 CREATE TABLE `perbaikan` (
@@ -155,18 +148,10 @@ CREATE TABLE `perbaikan` (
   `status_perbaikan` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `perbaikan`
---
-
-INSERT INTO `perbaikan` (`id_perbaikan`, `id_barang`, `jumlah_perbaikan`, `tgl_perbaikan`, `status_perbaikan`) VALUES
-(11, 3, '1', '2021-06-10', 'Telah Diperbaiki'),
-(12, 2, '2', '2021-06-10', 'Telah Diperbaiki');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pinjam`
+-- Table structure for table `pinjam`
 --
 
 CREATE TABLE `pinjam` (
@@ -177,21 +162,13 @@ CREATE TABLE `pinjam` (
   `tanggal_kembali` date NOT NULL,
   `id_user` int(11) NOT NULL,
   `status_pinjam` varchar(20) NOT NULL,
-  `status_kembali` varchar(25) NOT NULL
+  `status_kembali` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `pinjam`
---
-
-INSERT INTO `pinjam` (`id_pinjam`, `keperluan`, `kontak`, `tanggal_pinjam`, `tanggal_kembali`, `id_user`, `status_pinjam`, `status_kembali`) VALUES
-(2, 'Kawinan guru Fahruby', '0857213123', '2021-06-07', '2021-06-09', 2, 'Disetujui', 'Pengembalian Disetujui'),
-(14, '123', '08123213123123', '2021-06-10', '2021-06-25', 2, 'Menunggu', 'Pengembalian Disetujui');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sumberdana`
+-- Table structure for table `sumberdana`
 --
 
 CREATE TABLE `sumberdana` (
@@ -201,18 +178,20 @@ CREATE TABLE `sumberdana` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `sumberdana`
+-- Dumping data for table `sumberdana`
 --
 
 INSERT INTO `sumberdana` (`id_sumberdana`, `nama_sumberdana`, `keterangan`) VALUES
 (1, 'APBN', 'Anggaran Pendapatan dan Belanja Negara'),
 (2, 'DIPA', '-'),
-(12, 'PAGU', '-');
+(12, 'PAGU', '-'),
+(13, 'BANSOS', 'Bantuan Sosial'),
+(14, 'APBU', '-');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tanah`
+-- Table structure for table `tanah`
 --
 
 CREATE TABLE `tanah` (
@@ -227,7 +206,7 @@ CREATE TABLE `tanah` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tanah`
+-- Dumping data for table `tanah`
 --
 
 INSERT INTO `tanah` (`id_tanah`, `kode_tanah`, `nama_tanah`, `lokasi`, `nilai_aset`, `id_sumberdana`, `tanggal_perolehan`, `ult`) VALUES
@@ -236,7 +215,7 @@ INSERT INTO `tanah` (`id_tanah`, `kode_tanah`, `nama_tanah`, `lokasi`, `nilai_as
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -248,140 +227,139 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `nama_user`, `username`, `password`, `role`) VALUES
-(1, 'Mita', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'superadmin'),
-(2, 'sam', 'sam', '56fafa8964024efa410773781a5f9e93', 'public');
+(1, 'Mita', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'superadmin');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `bangunan`
+-- Indexes for table `bangunan`
 --
 ALTER TABLE `bangunan`
   ADD PRIMARY KEY (`id_bangunan`);
 
 --
--- Indeks untuk tabel `barang`
+-- Indexes for table `barang`
 --
 ALTER TABLE `barang`
   ADD PRIMARY KEY (`id_barang`);
 
 --
--- Indeks untuk tabel `detail_pinjam`
+-- Indexes for table `detail_pinjam`
 --
 ALTER TABLE `detail_pinjam`
   ADD PRIMARY KEY (`id_detail`);
 
 --
--- Indeks untuk tabel `jalan`
+-- Indexes for table `jalan`
 --
 ALTER TABLE `jalan`
   ADD PRIMARY KEY (`id_jalan`);
 
 --
--- Indeks untuk tabel `pemusnahan`
+-- Indexes for table `pemusnahan`
 --
 ALTER TABLE `pemusnahan`
   ADD PRIMARY KEY (`id_pemusnahan`);
 
 --
--- Indeks untuk tabel `perbaikan`
+-- Indexes for table `perbaikan`
 --
 ALTER TABLE `perbaikan`
   ADD PRIMARY KEY (`id_perbaikan`);
 
 --
--- Indeks untuk tabel `pinjam`
+-- Indexes for table `pinjam`
 --
 ALTER TABLE `pinjam`
   ADD PRIMARY KEY (`id_pinjam`);
 
 --
--- Indeks untuk tabel `sumberdana`
+-- Indexes for table `sumberdana`
 --
 ALTER TABLE `sumberdana`
   ADD PRIMARY KEY (`id_sumberdana`);
 
 --
--- Indeks untuk tabel `tanah`
+-- Indexes for table `tanah`
 --
 ALTER TABLE `tanah`
   ADD PRIMARY KEY (`id_tanah`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `bangunan`
+-- AUTO_INCREMENT for table `bangunan`
 --
 ALTER TABLE `bangunan`
   MODIFY `id_bangunan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `barang`
+-- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `detail_pinjam`
+-- AUTO_INCREMENT for table `detail_pinjam`
 --
 ALTER TABLE `detail_pinjam`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `jalan`
+-- AUTO_INCREMENT for table `jalan`
 --
 ALTER TABLE `jalan`
   MODIFY `id_jalan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `pemusnahan`
+-- AUTO_INCREMENT for table `pemusnahan`
 --
 ALTER TABLE `pemusnahan`
-  MODIFY `id_pemusnahan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_pemusnahan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `perbaikan`
+-- AUTO_INCREMENT for table `perbaikan`
 --
 ALTER TABLE `perbaikan`
-  MODIFY `id_perbaikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_perbaikan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `pinjam`
+-- AUTO_INCREMENT for table `pinjam`
 --
 ALTER TABLE `pinjam`
-  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `sumberdana`
+-- AUTO_INCREMENT for table `sumberdana`
 --
 ALTER TABLE `sumberdana`
-  MODIFY `id_sumberdana` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_sumberdana` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT untuk tabel `tanah`
+-- AUTO_INCREMENT for table `tanah`
 --
 ALTER TABLE `tanah`
   MODIFY `id_tanah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
