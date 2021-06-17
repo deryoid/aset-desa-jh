@@ -29,9 +29,9 @@ if (isset($_POST['musnah'])) {
                 jumlah_stok = jumlah_stok - '$brg[jumlah_musnah]' 
                 WHERE id_barang = '$brg[id_barang]'
                 ");
-                // var_dump($brg['id_barang']);
-                
             }
+
+
             $_SESSION['alert'] = "Berhasil";
             header("location: ../pemusnahan", true, 301);
         }

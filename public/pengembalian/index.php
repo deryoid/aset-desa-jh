@@ -49,7 +49,7 @@ include_once '../../config/auth-cek.php';
                                                                 </thead>
                                                                 <?php 
                                                                 $no = 1;
-                                                                $data = $koneksi->query("SELECT * FROM pinjam AS p LEFT JOIN user AS u ON p.id_user = u.id_user WHERE p.status_pinjam = 'Disetujui'");
+                                                                $data = $koneksi->query("SELECT * FROM pinjam AS p LEFT JOIN user AS u ON p.id_user = u.id_user WHERE p.id_user = '$_SESSION[id_user]' AND p.status_pinjam = 'Disetujui'");
                                                                 foreach ($data as $row) {  
                                                                 ?>
                                                                 <tbody>

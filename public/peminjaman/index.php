@@ -52,7 +52,7 @@ include_once '../../config/auth-cek.php';
                                                                 </thead>
                                                                 <?php 
                                                                 $no = 1;
-                                                                $data = $koneksi->query("SELECT * FROM pinjam AS p LEFT JOIN user AS u ON p.id_user = u.id_user ORDER BY id_pinjam DESC");
+                                                                $data = $koneksi->query("SELECT * FROM pinjam AS p LEFT JOIN user AS u ON p.id_user = u.id_user WHERE p.id_user = '$_SESSION[id_user]'");
                                                                 foreach ($data as $row) {  
                                                                 ?>
                                                                 <tbody>
