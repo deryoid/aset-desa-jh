@@ -22,17 +22,21 @@ if (isset($_POST['perbaikan'])) {
 // var_dump($submit, $koneksi->error); die;
             
         if ($submit) {
-            $databrg = $koneksi->query("SELECT * FROM perbaikan AS pb
-            LEFT JOIN barang AS bg
-            ON pb.id_barang = bg.id_barang");
-            foreach ($databrg as $brg){
-                $koneksi->query("UPDATE barang SET 
-                jumlah_stok = jumlah_stok - '$brg[jumlah_perbaikan]' 
-                WHERE id_barang = '$brg[id_barang]'
+            $databrg = $koneksi->query("SELECT * FROM barang WHERE id_barang = '$id_barang'")->fetch_array();
+            $koneksi->query("UPDATE barang SET 
+                jumlah_stok = jumlah_stok - '$jumlah_perbaikan' 
+                 WHERE id_barang = '$id_barang'
                 ");
-                // var_dump($brg['id_barang']);
+            // $databrg = $koneksi->query("SELECT * FROM perbaikan AS pb
+            // LEFT JOIN barang AS bg
+            // ON pb.id_barang = bg.id_barang");
+            // foreach ($databrg as $brg){
+            //     $koneksi->query("UPDATE barang SET 
+            //     jumlah_stok = jumlah_stok - '$brg[jumlah_perbaikan]' 
+            //     WHERE id_barang = '$brg[id_barang]'
+            //     ");
                 
-            }
+            // }
             $_SESSION['alert'] = "Berhasil";
             header("location: ../perbaikan", true, 301);
         }
