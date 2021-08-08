@@ -34,12 +34,6 @@
                                     <ul class="submenu">
                                         <li><a href="<?= base_url('admin/sumberdana') ?>">Sumber Dana</a></li>
                                         <li><a href="<?= base_url('admin/user') ?>">Pengguna</a></li>
-                                    </ul>
-                                </li>
-
-                                <li class="has-submenu <?= page_active('aset') ? 'active' : '' ?>"">
-                                    <a href="#"><span><i class="mdi mdi-table-edit"></i></span><span> Data Aset </span> </a>
-                                    <ul class="submenu">
                                         <li>
                                             <a href="<?= base_url('admin/bangunan') ?>">Bangunan</a>
                                         </li>
@@ -52,13 +46,21 @@
                                         <li>
                                             <a href="<?= base_url('admin/tanah') ?>">Tanah</a>
                                         </li>
-
-
                                     </ul>
                                 </li>
-                                <li class="has-submenu <?= page_active('transaksibarang') ? 'active' : '' ?>"">
-                                    <a href="#"><span><i class="mdi mdi-view-list"></i></span><span> Barang </span> </a>
+
+                                <li class="has-submenu <?= page_active('aset') ? 'active' : '' ?>"">
+                                    <a href="#"><span><i class="mdi mdi-table-edit"></i></span><span> Transaksi </span> </a>
                                     <ul class="submenu">
+                                         <li>
+                                            <a href="<?= base_url('admin/usulan_barang') ?>">Daftar Usulan Barang</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('admin/pengadaan') ?>">Pengadaan Barang</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('admin/peminjaman') ?>">Penerimaan Barang</a>
+                                        </li>
                                         <li>
                                             <a href="<?= base_url('admin/peminjaman') ?>">Peminjaman Barang</a>
                                         </li>
@@ -74,8 +76,9 @@
 
                                     </ul>
                                 </li>
+
                                 <li class="has-submenu <?= page_active('laporan') ? 'active' : '' ?>"">
-                                    <a href="#"><span><i class="mdi mdi-printer-settings"></i></span><span> Laporan </span> </a>
+                                    <a href="#"><span><i class="mdi mdi-printer-settings"></i></span><span> Report </span> </a>
                                     <ul class="submenu">
                                         <li>
                                             <a href="<?= base_url('admin/laporan/lap-asetbangunan') ?>" target="_blank">Aset Bangunan</a>

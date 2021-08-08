@@ -19,7 +19,7 @@ include_once '../../config/auth-cek.php';
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="header-title m-t-0 m-b-20">Barang</h4>
+                        <h4 class="header-title m-t-0 m-b-20">Daftar Usulan</h4>
                     </div>
                 </div>
 
@@ -27,7 +27,7 @@ include_once '../../config/auth-cek.php';
                     <ul class="nav nav-tabs tabs-bordered">
                         <li class="nav-item">
                             <a href="#tabel" data-toggle="tab" aria-expanded="false" class="nav-link active">
-                                Barang
+                                Daftar Usulan
                             </a>
                         </li>
                         <li class="nav-item">
@@ -55,33 +55,27 @@ include_once '../../config/auth-cek.php';
                                                                 <thead>
                                                                 <tr>
                                                                     <th>No</th>
-                                                                    <th>Kode Barang</th>
                                                                     <th>Nama Barang</th>
                                                                     <th>Tipe</th>
                                                                     <th>Nilai Aset</th>
                                                                     <th>Sumber Dana</th>
-                                                                    <th>Tanggal Perolehan</th>
-                                                                    <th>Kondisi</th>
-                                                                    <th>Jumlah Stok</th>
+                                                                    <th>Status</th>
                                                                     <th style="text-align: center;"><span class="badge badge-primary"><i class="mdi mdi-cogs"></i></span></th>
                                                                 </tr>
                                                                 </thead>
                                                                 <?php 
                                                                 $no = 1;
-                                                                $data = $koneksi->query("SELECT * FROM barang AS br LEFT JOIN sumberdana AS sd ON br.id_sumberdana = sd.id_sumberdana WHERE br.kondisi = 'Baik' AND br.status_pengadaan = 'Diterima'");
+                                                                $data = $koneksi->query("SELECT * FROM barang AS br LEFT JOIN sumberdana AS sd ON br.id_sumberdana = sd.id_sumberdana WHERE  br.status_pengadaan = 'Diusulkan'");
                                                                 foreach ($data as $row) {  
                                                                 ?>
                                                                 <tbody>
                                                                 <tr>
                                                                     <td><?= $no++; ?></td>
-                                                                    <td><?= $row['kode_barang']; ?></td>
                                                                     <td><?= $row['nama_barang']; ?></td>
                                                                     <td><?= $row['tipe']; ?></td>
                                                                     <td><?= $row['nilai_aset']; ?></td>
                                                                     <td><?= $row['nama_sumberdana']; ?></td>
-                                                                    <td><?= $row['tanggal_perolehan']; ?></td>
-                                                                    <td><?= $row['kondisi']; ?></td>
-                                                                    <td><?= $row['jumlah_stok']; ?></td>
+                                                                    <td><b><u><?= $row['status_pengadaan']; ?></u></b></td>
                                                                     <td style="text-align: center;">
                                                                     <a href="update?id=<?= $row['id_barang'] ?>"><span class="badge badge-success badge-lg"><i class="mdi mdi-briefcase-edit-outline"></i></span></a>
                                                                     <a href="proses?id=<?= $row['id_barang'] ?>"><span class="badge badge-danger badge-lg"><i class="mdi mdi-trash-can"></i></span></a>
@@ -110,10 +104,6 @@ include_once '../../config/auth-cek.php';
                                 <div class="panel-body">
                                     <form role="form" action="proses" method="POST" enctype="multipart/form-data">
                                         <div class="form-group">
-                                            <label for="kode_barang">Kode Barang</label>
-                                            <input type="text"  id="kode_barang" class="form-control" name="kode_barang">
-                                        </div>
-                                        <div class="form-group">
                                             <label for="nama_barang">Nama Barang</label>
                                             <input type="text"  id="nama_barang" class="form-control" name="nama_barang">
                                         </div>
@@ -137,23 +127,7 @@ include_once '../../config/auth-cek.php';
                                                     <?php } ?>
                                                 </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="tanggal_pembuatan">Tanggal Perolehan</label>
-                                            <div class="input-group">
-                                            <input type="date" class="form-control" name="tanggal_perolehan">
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
-                                                        </div>
-                                                     </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="kondisi">Kondisi</label>
-                                            <input type="text"  id="kondisi" class="form-control" name="kondisi" value="Baik" readonly>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="jumlah_stok">Jumlah Stok</label>
-                                            <input type="number"  id="jumlah_stok" class="form-control" name="jumlah_stok">
-                                        </div>
+                                       
                                         
                                         <button class="btn btn-primary waves-effect waves-light w-md" name="tambah" type="submit">Simpan</button>
                                     </form>

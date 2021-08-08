@@ -36,8 +36,9 @@
                                 <div class="text-center">
                                     <h2 class="text-uppercase m-t-0 m-b-30">
                                         <a href="index.html" class="text-success">
+                                            <i style="color: #00BFFF;">Aplikasi Pengelolaan Administrasi Pengadaan Inventaris dan Mutasi </i>
                                             <span><img src="assets/images/logo-kab-hss.png" alt="" height="150"></span><br>
-                                            <i style="color: #00BFFF;">Aset Desa Jambu Hulu</i>
+                                            <i style="color: #00BFFF;">Aset Desa Jambu Hulu Berbasis Web</i>
                                         </a>
                                     </h2>
                                     <!--<h4 class="text-uppercase font-bold m-b-0">Sign In</h4>-->
