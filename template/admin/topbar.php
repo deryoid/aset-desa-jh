@@ -59,7 +59,7 @@
                                             <a href="<?= base_url('admin/pengadaan') ?>">Pengadaan Barang</a>
                                         </li>
                                         <li>
-                                            <a href="<?= base_url('admin/peminjaman') ?>">Penerimaan Barang</a>
+                                            <a href="<?= base_url('admin/penerimaan') ?>">Penerimaan Barang</a>
                                         </li>
                                         <li>
                                             <a href="<?= base_url('admin/peminjaman') ?>">Peminjaman Barang</a>
