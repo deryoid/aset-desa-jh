@@ -79,7 +79,14 @@ $data = $koneksi->query("SELECT * FROM barang WHERE id_barang = '$id'")->fetch_a
                                         </div>
                                         <div class="form-group">
                                             <label for="kondisi">Kondisi</label>
-                                            <input type="text"  id="kondisi" class="form-control" value="<?= $data['kondisi'] ?>" name="kondisi" readonly>
+                                            <select class="form-control select2" data-placeholder="Pilih" id="kondisi" name="kondisi" required="">
+                                                    <option value="Baik" <?php if ($data['kondisi'] == "Baik") {
+                                                                            echo "selected";
+                                                                            } ?>>Baik</option>
+                                                    <option value="Rusak" <?php if ($data['kondisi'] == "Rusak") {
+                                                                                echo "selected";
+                                                                            } ?>>Rusak</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="jumlah_stok">Jumlah Stok</label>

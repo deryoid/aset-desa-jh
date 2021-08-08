@@ -62,13 +62,19 @@
                                             <a href="<?= base_url('admin/penerimaan') ?>">Penerimaan Barang</a>
                                         </li>
                                         <li>
+                                            <a href="<?= base_url('admin/distribusi') ?>">Pendistribusian Barang</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('admin/mutasi') ?>">Mutasi Barang</a>
+                                        </li>
+                                        <li>
                                             <a href="<?= base_url('admin/peminjaman') ?>">Peminjaman Barang</a>
                                         </li>
                                         <li>
                                             <a href="<?= base_url('admin/pengembalian') ?>">Pengembalian Barang</a>
                                         </li>
                                         <li>
-                                            <a href="<?= base_url('admin/perbaikan') ?>">Perbaikan Barang</a>
+                                            <a href="<?= base_url('admin/perbaikan') ?>">Perbaikan/Maintance Barang</a>
                                         </li>
                                         <li>
                                             <a href="<?= base_url('admin/pemusnahan') ?>">Pemusnahan Barang</a>
@@ -80,6 +86,21 @@
                                 <li class="has-submenu <?= page_active('laporan') ? 'active' : '' ?>"">
                                     <a href="#"><span><i class="mdi mdi-printer-settings"></i></span><span> Report </span> </a>
                                     <ul class="submenu">
+                                        <li>
+                                            <a href="<?= base_url('admin/laporan/lap-usulanpengadaan') ?>" target="_blank">Daftar Usulan Pengadaan</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('admin/laporan/lap-pengadaan') ?>" target="_blank">Pengadaan Barang</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('admin/laporan/lap-penerimaanbarang') ?>" target="_blank"> Penerimaan Barang</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('admin/laporan/lap-pendistribusian') ?>" target="_blank"> Pendistribusian Barang</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('admin/laporan/lap-pendistribusian') ?>" target="_blank"> Pemindahan Barang atau Mutasi</a>
+                                        </li>
                                         <li>
                                             <a href="<?= base_url('admin/laporan/lap-asetbangunan') ?>" target="_blank">Aset Bangunan</a>
                                         </li>
@@ -100,6 +121,9 @@
                                         </li>
                                         <li>
                                             <a href="<?= base_url('admin/laporan/lap-musnahbarang') ?>" target="_blank">Pemusnahan Barang</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('admin/laporan/lap-kerusakan') ?>" target="_blank">Kerusakan Barang</a>
                                         </li>
                                         <li>
                                             <a href="<?= base_url('admin/laporan/lap-perbaikanbarang') ?>" target="_blank">Perbaikan Barang</a>

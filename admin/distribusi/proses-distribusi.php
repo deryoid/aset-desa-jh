@@ -3,21 +3,27 @@ require_once '../../config/config.php';
 include_once '../../config/auth-cek.php';
 
 // Musnah
-if (isset($_POST['musnah'])) {
+if (isset($_POST['distribusi'])) {
     $id_barang              = $_POST['id_barang'];
-    $jumlah_musnah          = $_POST['jumlah_musnah'];
-    $tgl_pemusnahan          = $_POST['tgl_pemusnahan'];
+    $jumlah_distribusi          = $_POST['jumlah_distribusi'];
+    $tgl_distribusi          = $_POST['tgl_distribusi'];
+    $nama_pj          = $_POST['nama_pj'];
+    $jabatan          = $_POST['jabatan'];
+    $bagian          = $_POST['bagian'];
     
     
 
 
-        $submit = $koneksi->query("INSERT INTO pemusnahan VALUES (
+        $submit = $koneksi->query("INSERT INTO distribusi VALUES (
             NULL,  
             '$id_barang', 
-            '$jumlah_musnah',
-            '$tgl_pemusnahan'
+            '$jumlah_distribusi',
+            '$tgl_distribusi',
+            '$nama_pj',
+            '$jabatan',
+            '$bagian'
             )");
-
+        // var_dump($submit, $koneksi->error);die();
             
             
         if ($submit) {
@@ -31,12 +37,12 @@ if (isset($_POST['musnah'])) {
             //     ");
             // }
             $koneksi->query("UPDATE barang SET 
-             jumlah_stok = jumlah_stok - '$jumlah_musnah' 
+             jumlah_stok = jumlah_stok - '$jumlah_distribusi' 
                 WHERE id_barang = '$id_barang'
                 ");
 
             $_SESSION['alert'] = "Berhasil";
-            header("location: ../pemusnahan", true, 301);
+            header("location: ../distribusi", true, 301);
         }
         
 }

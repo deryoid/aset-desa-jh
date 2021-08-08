@@ -68,7 +68,7 @@ include_once '../../config/auth-cek.php';
                                                                 </thead>
                                                                 <?php 
                                                                 $no = 1;
-                                                                $data = $koneksi->query("SELECT * FROM barang AS br LEFT JOIN sumberdana AS sd ON br.id_sumberdana = sd.id_sumberdana WHERE br.kondisi = 'Baik' AND br.status_pengadaan = 'Diterima'");
+                                                                $data = $koneksi->query("SELECT * FROM barang AS br LEFT JOIN sumberdana AS sd ON br.id_sumberdana = sd.id_sumberdana WHERE br.status_pengadaan = 'Diterima'");
                                                                 foreach ($data as $row) {  
                                                                 ?>
                                                                 <tbody>

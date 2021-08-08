@@ -22,7 +22,7 @@ include_once '../../config/auth-cek.php';
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="header-title m-t-0 m-b-20">Perbaikan Barang</h4>
+                        <h4 class="header-title m-t-0 m-b-20">Distribusi Barang</h4>
                     </div>
                 </div>
 
@@ -34,8 +34,8 @@ include_once '../../config/auth-cek.php';
                                 <div class="panel panel-primary panel-fill">
                                     <div class="panel-heading">
                                         <table border="0" width="100%">
-                                        <th style="text-align: left; color:white;">Perbaikan Barang</th>
-                                        <th style="text-align: right; color:white;"><a href="" class="btn btn-success btn-rounded" data-toggle="modal" data-target="#modal-perbaikan"><i class="mdi mdi-cogs"></i> Tambah</span></a></th>
+                                        <th style="text-align: left; color:white;">Distribusi Barang</th>
+                                        <th style="text-align: right; color:white;"><a href="" class="btn btn-success btn-rounded" data-toggle="modal" data-target="#modal-distribusi"><i class="mdi mdi-plus"></i> Tambah</span></a></th>
                                         </table>
                                     </div>
                                     <div class="panel-body">
@@ -45,43 +45,33 @@ include_once '../../config/auth-cek.php';
                                                                 <thead>
                                                                 <tr>
                                                                     <th>No</th>
-                                                                    <th>Kode Barang</th>
                                                                     <th>Nama Barang</th>
-                                                                    <th>Status Perbaikan Barang</th>
                                                                     <th>Tanggal</th>
-                                                                    <th>Jumlah yang Diperbaiki</th>
-                                                                    <th><span class="badge badge-primary"><i class="mdi mdi-cogs"></i></span></th>
-                                                                    
+                                                                    <th>Di Distribusikan Ke-</th>
+                                                                    <th>Jumlah yang Didistribusikan</th>
                                                                 </tr>
                                                                 </thead>
                                                                 <?php 
                                                                 $no = 1;
-                                                                $data = $koneksi->query("SELECT * FROM perbaikan AS pb
+                                                                $data = $koneksi->query("SELECT * FROM distribusi AS pm
                                                                 LEFT JOIN barang AS bg
-                                                                ON pb.id_barang = bg.id_barang");
+                                                                ON pm.id_barang = bg.id_barang");
                                                                 foreach ($data as $row) {  
                                                                 ?>
                                                                 <tbody>
                                                                 <tr>
                                                                     <td><?= $no++; ?></td>
-                                                                    <td><?= $row['kode_barang']; ?></td>
                                                                     <td><?= $row['nama_barang']; ?></td>
-                                                                    <td style="text-align: center;">
-                                                                    <?php if ($row['status_perbaikan'] == 'Sedang Diperbaiki'){ ?>
-                                                                    <span class="badge badge-warning badge-lg"><i class="mdi mdi-check-decagram"></i> Sedang Diperbaiki</span><br>
-                                                                    <?php }elseif ($row['status_perbaikan'] == 'Telah Diperbaiki'){ ?>
-                                                                    <span class="badge badge-success badge-lg"><i class="mdi mdi-close-octagon"> Telah Diperbaiki</i></span>
-                                                                    <?php }?>
-                                                                   </td>
-                                                                    <td><?= $row['tgl_perbaikan']; ?></td>
-                                                                    <td><?= $row['jumlah_perbaikan']; ?></td>
-                                                                    <td style="text-align: center;">
-                                                                   <?php if ($row['status_perbaikan'] == 'Sedang Diperbaiki'){ ?>
-                                                                    <a href="selesai-perbaikan?id=<?= $row['id_perbaikan'] ?>" ><span class="badge badge-primary badge-lg"><i class="mdi mdi-eye"></i> Aksi</span></a>
-                                                                    <?php }else{ ?>
-                                                                    <span>Tidak ada Aksi</span>
-                                                                    <?php } ?>
+                                                                    <td><?= $row['tgl_distribusi']; ?></td>
+                                                                    <td>
+                                                                        <ul>
+                                                                            <li>Nama Penanggung Jawab : <?= $row['nama_pj']; ?></li>
+                                                                            <li>Jabatan : <?= $row['jabatan']; ?></li>
+                                                                            <li>Bagian : <?= $row['bagian']; ?></li>
+                                                                        </ul>
                                                                     </td>
+                                                                    <td><?= $row['jumlah_distribusi']; ?></td>
+                                                                    
                                                                 </tr>
                                                                 </tbody>
                                                             <?php }
@@ -118,16 +108,16 @@ include_once '../../config/auth-cek.php';
 </html>
 
 <!--  Modal content for the above example -->
-<div class="modal fade bs-example-modal-lg" id="modal-perbaikan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+<div class="modal fade bs-example-modal-lg" id="modal-distribusi" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="myLargeModalLabel">Perbaikan Barang</h5>
+                    <h5 class="modal-title" id="myLargeModalLabel">Distribusi Barang</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="xmodal-body">
                 <p>
-                <form role="form" action="proses-perbaikan" method="POST" enctype="multipart/form-data">    
+                <form role="form" action="proses-distribusi" method="POST" enctype="multipart/form-data">    
 
                                         
 
@@ -136,7 +126,7 @@ include_once '../../config/auth-cek.php';
                                             <select class="form control select2" name="id_barang" id="id_barang" data-placeholder="Pilih" style="width: 100%;" required>
                                                     <option value=""></option>
                                                     <?php
-                                                    $sd = $koneksi->query("SELECT * FROM barang WHERE kondisi = 'Rusak'");
+                                                    $sd = $koneksi->query("SELECT * FROM barang ORDER BY id_barang DESC");
                                                     foreach ($sd as $item) {
                                                     ?>
                                                         <option value="<?= $item['id_barang'] ?>"><?= "(".$item['kode_barang'].")" ?> <?= $item['nama_barang'] ?>| Stok : <?= $item['jumlah_stok'] ?></option>
@@ -151,20 +141,31 @@ include_once '../../config/auth-cek.php';
                                         
 
                                         <div class="form-group">
-                                            <label for="jumlah_perbaikan">Jumlah yang Diperbaiki</label>
-                                            <input type="number"  id="jumlah_perbaikan" onkeyup="validstok()" class="form-control" name="jumlah_perbaikan">
+                                            <label for="jumlah_musnah">Jumlah yang Didistribusikan</label>
+                                            <input type="number"  id="jumlah_distribusi" onkeyup="validstok()" class="form-control" name="jumlah_distribusi">
                                         </div>
                                         <div class="form-group">
-                                            <label for="tgl_perbaikan">Tanggal Perbaikan</label>
+                                            <label for="tgl_pemusnahan">Tanggal Distribusi</label>
                                             <div class="input-group">
-                                            <input type="date" class="form-control" name="tgl_perbaikan">
+                                            <input type="date" class="form-control" name="tgl_distribusi">
                                                         <div class="input-group-append">
                                                             <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                                                         </div>
                                                      </div>
                                         </div>
-                                       
-                                        <button class="btn btn-primary waves-effect waves-light w-md" name="perbaikan" type="submit">Perbaikan</button>
+                                        <div class="form-group">
+                                            <label for="">Nama Penanggung Jawab</label>
+                                            <input type="text" name="nama_pj" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Jabatan</label>
+                                            <input type="text" name="jabatan" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Bagian</label>
+                                            <input type="text" name="bagian" class="form-control">
+                                        </div>
+                                        <button class="btn btn-primary waves-effect waves-light w-md" name="distribusi" type="submit">Distribusi</button>
                                  </form>
                                  </p>
                 </div>
@@ -193,9 +194,9 @@ $('#id_barang').change(function(){
 
 function validstok() {
     var stok = $('#jumlah_stok').val();
-    var jumlah_perbaikan = $('#jumlah_perbaikan').val();
+    var jumlah_distribusi = $('#jumlah_distribusi').val();
 
-    if(parseInt(jumlah_perbaikan) > parseInt(stok)){
+    if(parseInt(jumlah_distribusi) > parseInt(stok)){
         swal(
             {
                 title: 'Stok Tidak Mencukupi',
