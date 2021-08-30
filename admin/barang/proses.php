@@ -6,12 +6,13 @@ include_once '../../config/auth-cek.php';
 if (isset($_POST['tambah'])) {
     $kode_barang = $_POST['kode_barang'];
     $nama_barang = $_POST['nama_barang'];
-    $tipe        = $_POST['tipe'];
+    $pengelompokan        = $_POST['pengelompokan'];
     $nilai_aset    = $_POST['nilai_aset'];
     $id_sumberdana = $_POST['id_sumberdana'];
     $tanggal_perolehan      = $_POST['tanggal_perolehan'];
     $kondisi       = $_POST['kondisi'];
     $jumlah_stok           = $_POST['jumlah_stok'];
+    $status_pengadaan           = $_POST['status_pengadaan'];
 
     $cek_kb = $koneksi->query("SELECT * FROM barang WHERE kode_barang = '$kode_barang'")->fetch_array();
 
@@ -24,13 +25,13 @@ if (isset($_POST['tambah'])) {
             NULL, 
             '$kode_barang', 
             '$nama_barang', 
-            '$tipe', 
+            '$pengelompokan', 
             '$nilai_aset', 
             '$id_sumberdana', 
             '$tanggal_perolehan', 
             '$kondisi', 
             '$jumlah_stok',
-            NULL
+            'Diterima'
             )");
             //  var_dump($submit, $koneksi->error); die;
         if ($submit) {
@@ -45,7 +46,7 @@ if (isset($_POST['tambah'])) {
         $id_barang = $_POST['id_barang'];
         $kode_barang = $_POST['kode_barang'];
         $nama_barang = $_POST['nama_barang'];
-        $tipe        = $_POST['tipe'];
+        $pengelompokan        = $_POST['pengelompokan'];
         $nilai_aset    = $_POST['nilai_aset'];
         $id_sumberdana = $_POST['id_sumberdana'];
         $tanggal_perolehan      = $_POST['tanggal_perolehan'];
@@ -55,7 +56,7 @@ if (isset($_POST['tambah'])) {
         $submit = $koneksi->query("UPDATE barang SET 
         kode_barang = '$kode_barang', 
         nama_barang = '$nama_barang', 
-        tipe = '$tipe', 
+        pengelompokan = '$pengelompokan', 
         nilai_aset = '$nilai_aset', 
         id_sumberdana = '$id_sumberdana', 
         tanggal_perolehan = '$tanggal_perolehan', 

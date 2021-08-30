@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 08 Agu 2021 pada 14.58
+-- Waktu pembuatan: 30 Agu 2021 pada 02.26
 -- Versi server: 5.7.24
 -- Versi PHP: 7.4.12
 
@@ -57,7 +57,7 @@ CREATE TABLE `barang` (
   `id_barang` int(11) NOT NULL,
   `kode_barang` varchar(100) DEFAULT NULL,
   `nama_barang` varchar(255) DEFAULT NULL,
-  `tipe` varchar(100) DEFAULT NULL,
+  `pengelompokan` varchar(100) DEFAULT NULL,
   `nilai_aset` varchar(150) DEFAULT NULL,
   `id_sumberdana` int(11) DEFAULT NULL,
   `tanggal_perolehan` date DEFAULT NULL,
@@ -70,12 +70,12 @@ CREATE TABLE `barang` (
 -- Dumping data untuk tabel `barang`
 --
 
-INSERT INTO `barang` (`id_barang`, `kode_barang`, `nama_barang`, `tipe`, `nilai_aset`, `id_sumberdana`, `tanggal_perolehan`, `kondisi`, `jumlah_stok`, `status_pengadaan`) VALUES
-(2, 'BRG01', 'Laptop', 'Elektronik', 'Rp. 7.000.000', 2, '2021-06-07', 'Rusak', '6', 'Diterima'),
-(3, 'BRG02', 'TV', 'Elektronik', 'Rp. 2.000.000', 1, '2021-06-07', 'Baik', '6', 'Diterima'),
-(4, 'BRG03', 'Kursi', 'Plastik', 'Rp. 20.000.000', 14, '2021-06-16', 'Baik', '150', 'Diterima'),
-(5, 'BRG04', 'Meja Tamu', 'Kayu', 'Rp. 2.000.000', 12, '2021-06-17', 'Baik', '40', 'Diterima'),
-(6, 'BRG009', 'Pot Tanaman', 'Keramik', 'Rp. 500.000', 14, '2021-08-09', 'Baik', '2', 'Diterima');
+INSERT INTO `barang` (`id_barang`, `kode_barang`, `nama_barang`, `pengelompokan`, `nilai_aset`, `id_sumberdana`, `tanggal_perolehan`, `kondisi`, `jumlah_stok`, `status_pengadaan`) VALUES
+(2, 'BRG01', 'Laptop', 'Barang', 'Rp. 7.000.000', 2, '2021-06-07', 'Rusak', '6', 'Diterima'),
+(3, 'BRG02', 'TV', 'Barang', 'Rp. 2.000.000', 1, '2021-06-07', 'Baik', '6', 'Diterima'),
+(4, 'BRG03', 'Kursi', 'Barang', 'Rp. 20.000.000', 14, '2021-06-16', 'Baik', '150', 'Diterima'),
+(5, 'BRG04', 'Kantor Desa', 'Bangunan', 'Rp. 2.000.000', 12, '2021-06-17', 'Baik', '40', 'Diterima'),
+(6, 'BRG009', 'Pot Tanaman', 'Barang', 'Rp. 500.000', 14, '2021-08-09', 'Baik', '2', 'Diterima');
 
 -- --------------------------------------------------------
 
@@ -315,7 +315,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id_user`, `nama_user`, `username`, `password`, `role`) VALUES
 (1, 'Mita', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'superadmin'),
 (2, 'Eva', 'eva', '827ccb0eea8a706c4c34a16891f84e7b', 'public'),
-(3, 'Sam', 'sam', '827ccb0eea8a706c4c34a16891f84e7b', 'public');
+(3, 'Sam', 'sam', '827ccb0eea8a706c4c34a16891f84e7b', 'public'),
+(4, 'Pimpinan', 'pimpinan', '90973652b88fe07d05a4304f0a945de8', 'pimpinan');
 
 --
 -- Indexes for dumped tables
@@ -409,7 +410,7 @@ ALTER TABLE `bangunan`
 -- AUTO_INCREMENT untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `detail_pinjam`
@@ -469,7 +470,7 @@ ALTER TABLE `tanah`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

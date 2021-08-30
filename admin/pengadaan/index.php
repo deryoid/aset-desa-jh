@@ -44,7 +44,7 @@ include_once '../../config/auth-cek.php';
                                                                 <tr>
                                                                     <th>No</th>
                                                                     <th>Nama Barang</th>
-                                                                    <th>Tipe</th>
+                                                                    <th>pengelompokan</th>
                                                                     <th>Nilai Aset</th>
                                                                     <th>Sumber Dana</th>
                                                                     <th>Status</th>
@@ -60,7 +60,7 @@ include_once '../../config/auth-cek.php';
                                                                 <tr>
                                                                     <td><?= $no++; ?></td>
                                                                     <td><?= $row['nama_barang']; ?></td>
-                                                                    <td><?= $row['tipe']; ?></td>
+                                                                    <td><?= $row['pengelompokan']; ?></td>
                                                                     <td><?= $row['nilai_aset']; ?></td>
                                                                     <td><?= $row['nama_sumberdana']; ?></td>
                                                                     <td><b><u><?= $row['status_pengadaan']; ?></u></b></td>

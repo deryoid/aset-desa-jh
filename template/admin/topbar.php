@@ -152,6 +152,68 @@
                                 </li>                          
 
                             <?php endif; ?>
+                            <?php if ($_SESSION['role'] == 'pimpinan') : ?>
+                                <li class="has-submenu">
+                                    <a href="index" class="<?= page_active('pimpinan') ? 'active' : '' ?>">
+                                        <span><i class="ti-home"></i></span><span> Dashboard </span> </a>
+                                    </li>
+                                <li class="has-submenu">
+                                    <a href="#" data-toggle="modal" data-target="#modal-kel" target="_blank" class="<?= page_active('pengelompokan') ? 'active' : '' ?>">
+                                        <span><i class="ti-search" ></i></span><span> Pengelompokan </span> </a>
+                                    </li>
+
+                                    <li class="has-submenu <?= page_active('laporan') ? 'active' : '' ?>"">
+                                    <a href="#"><span><i class="mdi mdi-printer-settings"></i></span><span> Report </span> </a>
+                                    <ul class="submenu">
+                                        <li>
+                                            <a href="<?= base_url('pimpinan/laporan/lap-usulanpengadaan') ?>" target="_blank">Daftar Usulan Pengadaan</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('pimpinan/laporan/lap-pengadaan') ?>" target="_blank">Pengadaan Barang</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('pimpinan/laporan/lap-penerimaanbarang') ?>" target="_blank"> Penerimaan Barang</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('pimpinan/laporan/lap-pendistribusian') ?>" target="_blank"> Pendistribusian Barang</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('pimpinan/laporan/lap-pendistribusian') ?>" target="_blank"> Pemindahan Barang atau Mutasi</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('pimpinan/laporan/lap-asetbangunan') ?>" target="_blank">Aset Bangunan</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('pimpinan/laporan/lap-asetbarang') ?>" target="_blank">Aset Barang</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('pimpinan/laporan/lap-asetjalan') ?>" target="_blank">Aset Jalan</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('pimpinan/laporan/lap-asettanah') ?>" target="_blank">Aset Tanah</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('pimpinan/laporan/lap-pinjambarang') ?>" target="_blank">Peminjaman Barang</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('pimpinan/laporan/lap-kembalibarang') ?>" target="_blank">Pengembalian Barang</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('pimpinan/laporan/lap-musnahbarang') ?>" target="_blank">Pemusnahan Barang</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('pimpinan/laporan/lap-kerusakan') ?>" target="_blank">Kerusakan Barang</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?= base_url('pimpinan/laporan/lap-perbaikanbarang') ?>" target="_blank">Perbaikan Barang</a>
+                                        </li>
+                                       
+
+                                    </ul>
+                                </li>
+                
+
+                            <?php endif; ?>
                             </ul>
                             <!-- End navigation menu -->
                         </div> <!-- end #navigation -->
@@ -208,3 +270,38 @@
             <!-- end topbar-main -->
 
         </header>
+
+        
+<!--  Modal content for the above example -->
+<div class="modal fade bs-example-modal-lg" id="modal-kel" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myLargeModalLabel">Pengelompokan Barang/Aset</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="xmodal-body">
+                <p>
+                <form role="form" action="<?= base_url('pimpinan/laporan/lap-kelaset') ?>" target="_blank" method="POST" enctype="multipart/form-data">    
+
+                                        <div class="form-group">
+                                            <label for="kode_barang">Pengelompokan Aset/Barang</label>
+                                            <select class="form control select2" name="pengelompokan" id="pengelompokan" data-placeholder="Pilih" style="width: 100%;" required>
+                                                    <option value=""></option>
+                                                    <?php
+                                                    $sd = $koneksi->query("SELECT pengelompokan FROM barang GROUP BY pengelompokan");
+                                                    foreach ($sd as $item) {
+                                                    ?>
+                                                        <option value="<?= $item['pengelompokan'] ?>"><?= $item['pengelompokan'] ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                        </div>
+                                       
+                                        <button class="btn btn-primary waves-effect waves-light w-md" target="_blank" name="print" type="submit">Pengelompokan</button>
+                                 </form>
+                                 </p>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+

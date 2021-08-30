@@ -11,7 +11,7 @@ include_once '../../config/auth-cek.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kerusakan Barang</title>
+    <title>Aset Bangunan</title>
     <link rel="shortcut icon" href="<?= base_url() ?>/assets/images/logo-kab-hss.png">
 
     <style>
@@ -97,40 +97,39 @@ include_once '../../config/auth-cek.php';
     <hr size="1.5" style="margin-bottom: 5px; color: black; font-weight: bold;">
 
     <div class="judul">
-        Kerusakan Barang
+        Aset Desa Bangunan
     </div>
 
     <table border="1" cellspacing="0  ">
     <thead>
         <tr>
             <th>No</th>
-            <th>Kode Barang</th>
-            <th>Nama Barang</th>
-            <th>pengelompokan</th>
+            <th>Kode Bangunan</th>
+            <th>Nama Bangunan</th>
+            <th>Lokasi</th>
             <th>Nilai Aset</th>
             <th>Sumber Dana</th>
-            <th>Tanggal Perolehan</th>
+            <th>Tanggal Pembuatan</th>
             <th>Kondisi</th>
-            <th>Jumlah Stok</th>
+            <th>Ukuran Luas Bangunan</th>
         </tr>
         </thead>
         <?php 
         $no = 1;
-        $data = $koneksi->query("SELECT * FROM barang AS br LEFT JOIN sumberdana AS sd ON br.id_sumberdana = sd.id_sumberdana WHERE br.kondisi = 'Rusak'");
+        $data = $koneksi->query("SELECT * FROM bangunan AS b LEFT JOIN sumberdana AS sd ON b.id_sumberdana = sd.id_sumberdana ORDER BY id_bangunan ASC");
         foreach ($data as $row) {  
         ?>
         <tbody>
         <tr>
             <td><?= $no++; ?></td>
-            <td><?= $row['kode_barang']; ?></td>
-            <td><?= $row['nama_barang']; ?></td>
-            <td><?= $row['pengelompokan']; ?></td>
+            <td><?= $row['kode_bangunan']; ?></td>
+            <td><?= $row['nama_bangunan']; ?></td>
+            <td><?= $row['lokasi']; ?></td>
             <td><?= $row['nilai_aset']; ?></td>
             <td><?= $row['nama_sumberdana']; ?></td>
-            <td><?= $row['tanggal_perolehan']; ?></td>
+            <td><?= $row['tanggal_pembuatan']; ?></td>
             <td><?= $row['kondisi']; ?></td>
-            <td><?= $row['jumlah_stok']; ?></td>
-            </td>
+            <td><?= $row['ulb']; ?></td>
         </tr>
         </tbody>
     <?php } ?>

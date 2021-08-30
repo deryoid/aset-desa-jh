@@ -2,6 +2,9 @@
 require_once '../../config/config.php';
 include_once '../../config/auth-cek.php';
 
+$pengelompokan = $_POST['pengelompokan'];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +14,7 @@ include_once '../../config/auth-cek.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kerusakan Barang</title>
+    <title>Aset Barang</title>
     <link rel="shortcut icon" href="<?= base_url() ?>/assets/images/logo-kab-hss.png">
 
     <style>
@@ -91,13 +94,15 @@ include_once '../../config/auth-cek.php';
         
     </div>
     <div class="alamat">
+        
         Kecamatan Padang Batung, Kabupaten Hulu Sungai Selatan
     </div>
 
     <hr size="1.5" style="margin-bottom: 5px; color: black; font-weight: bold;">
 
     <div class="judul">
-        Kerusakan Barang
+   
+        Aset Desa Barang
     </div>
 
     <table border="1" cellspacing="0  ">
@@ -116,7 +121,7 @@ include_once '../../config/auth-cek.php';
         </thead>
         <?php 
         $no = 1;
-        $data = $koneksi->query("SELECT * FROM barang AS br LEFT JOIN sumberdana AS sd ON br.id_sumberdana = sd.id_sumberdana WHERE br.kondisi = 'Rusak'");
+        $data = $koneksi->query("SELECT * FROM barang AS br LEFT JOIN sumberdana AS sd ON br.id_sumberdana = sd.id_sumberdana WHERE br.pengelompokan = '$pengelompokan'");
         foreach ($data as $row) {  
         ?>
         <tbody>

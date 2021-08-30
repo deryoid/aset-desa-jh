@@ -164,11 +164,25 @@ if (isset($_POST['login'])) {
                     );
                 </script>";
                 echo '<meta http-equiv="refresh" content="2; url=public">';
+            }else
+            if ($data['role'] == 'pimpinan') {
+                echo "
+                <script type='text/javascript'>
+
+                    swal(
+                        {
+                            title: 'Berhasil',
+                            text: 'Tekan Tombol Ok Untuk Melanjutkan!',
+                            type: 'success',
+                        }
+                    );
+                </script>";
+                echo '<meta http-equiv="refresh" content="2; url=pimpinan">';
             } else
             if ($data['role'] == 'public') {
-                $pasien = $koneksi->query("SELECT * FROM public WHERE id_user = '$data[id_user]'")->fetch_array();
-                $_SESSION['id_public']   = $pasien['id_public'];
-                $_SESSION['nama_public'] = $pasien['nama'];
+                $public = $koneksi->query("SELECT * FROM public WHERE id_user = '$data[id_user]'")->fetch_array();
+                $_SESSION['id_public']   = $public['id_public'];
+                $_SESSION['nama_public'] = $public['nama'];
                 echo "
                 <script type='text/javascript'>
                 Toast.fire({

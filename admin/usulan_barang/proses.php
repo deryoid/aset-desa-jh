@@ -5,7 +5,7 @@ include_once '../../config/auth-cek.php';
 // Simpan
 if (isset($_POST['tambah'])) {
     $nama_barang = $_POST['nama_barang'];
-    $tipe        = $_POST['tipe'];
+    $pengelompokan        = $_POST['pengelompokan'];
     $nilai_aset    = $_POST['nilai_aset'];
     $id_sumberdana = $_POST['id_sumberdana'];
 
@@ -20,7 +20,7 @@ if (isset($_POST['tambah'])) {
             NULL, 
             NULL, 
             '$nama_barang', 
-            '$tipe', 
+            '$pengelompokan', 
             '$nilai_aset', 
             '$id_sumberdana', 
             NULL, 
@@ -40,13 +40,13 @@ if (isset($_POST['tambah'])) {
     if (isset($_POST['edit'])) {
         $id_barang = $_POST['id_barang'];
         $nama_barang = $_POST['nama_barang'];
-        $tipe        = $_POST['tipe'];
+        $pengelompokan        = $_POST['pengelompokan'];
         $nilai_aset    = $_POST['nilai_aset'];
         $id_sumberdana = $_POST['id_sumberdana'];
 
         $submit = $koneksi->query("UPDATE barang SET 
         nama_barang = '$nama_barang', 
-        tipe = '$tipe', 
+        pengelompokan = '$pengelompokan', 
         nilai_aset = '$nilai_aset', 
         id_sumberdana = '$id_sumberdana'
         WHERE 

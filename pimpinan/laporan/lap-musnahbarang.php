@@ -11,7 +11,7 @@ include_once '../../config/auth-cek.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kerusakan Barang</title>
+    <title>Pemusnahan Barang</title>
     <link rel="shortcut icon" href="<?= base_url() ?>/assets/images/logo-kab-hss.png">
 
     <style>
@@ -97,43 +97,40 @@ include_once '../../config/auth-cek.php';
     <hr size="1.5" style="margin-bottom: 5px; color: black; font-weight: bold;">
 
     <div class="judul">
-        Kerusakan Barang
+    Pemusnahan Barang
     </div>
 
-    <table border="1" cellspacing="0  ">
+    <table border="1" cellspacing="0">
     <thead>
-        <tr>
-            <th>No</th>
-            <th>Kode Barang</th>
-            <th>Nama Barang</th>
-            <th>pengelompokan</th>
-            <th>Nilai Aset</th>
-            <th>Sumber Dana</th>
-            <th>Tanggal Perolehan</th>
-            <th>Kondisi</th>
-            <th>Jumlah Stok</th>
-        </tr>
-        </thead>
-        <?php 
-        $no = 1;
-        $data = $koneksi->query("SELECT * FROM barang AS br LEFT JOIN sumberdana AS sd ON br.id_sumberdana = sd.id_sumberdana WHERE br.kondisi = 'Rusak'");
-        foreach ($data as $row) {  
-        ?>
-        <tbody>
-        <tr>
-            <td><?= $no++; ?></td>
-            <td><?= $row['kode_barang']; ?></td>
-            <td><?= $row['nama_barang']; ?></td>
-            <td><?= $row['pengelompokan']; ?></td>
-            <td><?= $row['nilai_aset']; ?></td>
-            <td><?= $row['nama_sumberdana']; ?></td>
-            <td><?= $row['tanggal_perolehan']; ?></td>
-            <td><?= $row['kondisi']; ?></td>
-            <td><?= $row['jumlah_stok']; ?></td>
-            </td>
-        </tr>
-        </tbody>
-    <?php } ?>
+    <tr>
+        <th>No</th>
+        <th>Kode Barang</th>
+        <th>Nama Barang</th>
+        <th>Kondisi Barang</th>
+        <th>Tanggal</th>
+        <th>Jumlah yang Dimusnahkan</th>
+        
+    </tr>
+    </thead>
+    <?php 
+    $no = 1;
+    $data = $koneksi->query("SELECT * FROM pemusnahan AS pm
+    LEFT JOIN barang AS bg
+    ON pm.id_barang = bg.id_barang");
+    foreach ($data as $row) {  
+    ?>
+    <tbody>
+    <tr>
+        <td><?= $no++; ?></td>
+        <td><?= $row['kode_barang']; ?></td>
+        <td><?= $row['nama_barang']; ?></td>
+        <td><span class="badge badge-danger"> Telah Dimusnakan</span></td>
+        <td><?= $row['tgl_pemusnahan']; ?></td>
+        <td><?= $row['jumlah_musnah']; ?></td>
+        
+    </tr>
+    </tbody>
+<?php } ?>
     </table>
 
     <!-- <div style="margin-top: 10px;">

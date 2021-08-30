@@ -49,8 +49,8 @@ $data = $koneksi->query("SELECT * FROM barang WHERE id_barang = '$id'")->fetch_a
                                             <input type="text"  id="nama_barang" value="<?= $data['nama_barang'] ?>" class="form-control" name="nama_barang">
                                         </div>
                                         <div class="form-group">
-                                            <label for="tipe">Tipe</label>
-                                            <input type="text"  id="tipe" value="<?= $data['tipe'] ?>" class="form-control" name="tipe">
+                                            <label for="pengelompokan">pengelompokan</label>
+                                            <input type="text"  id="pengelompokan" value="<?= $data['pengelompokan'] ?>" class="form-control" name="pengelompokan">
                                         </div>
                                         <div class="form-group">
                                             <label for="nilai_aset">Nilai Aset</label>

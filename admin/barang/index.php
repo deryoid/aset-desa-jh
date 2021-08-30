@@ -57,7 +57,7 @@ include_once '../../config/auth-cek.php';
                                                                     <th>No</th>
                                                                     <th>Kode Barang</th>
                                                                     <th>Nama Barang</th>
-                                                                    <th>Tipe</th>
+                                                                    <th>pengelompokan</th>
                                                                     <th>Nilai Aset</th>
                                                                     <th>Sumber Dana</th>
                                                                     <th>Tanggal Perolehan</th>
@@ -76,7 +76,7 @@ include_once '../../config/auth-cek.php';
                                                                     <td><?= $no++; ?></td>
                                                                     <td><?= $row['kode_barang']; ?></td>
                                                                     <td><?= $row['nama_barang']; ?></td>
-                                                                    <td><?= $row['tipe']; ?></td>
+                                                                    <td><?= $row['pengelompokan']; ?></td>
                                                                     <td><?= $row['nilai_aset']; ?></td>
                                                                     <td><?= $row['nama_sumberdana']; ?></td>
                                                                     <td><?= $row['tanggal_perolehan']; ?></td>
@@ -118,8 +118,8 @@ include_once '../../config/auth-cek.php';
                                             <input type="text"  id="nama_barang" class="form-control" name="nama_barang">
                                         </div>
                                         <div class="form-group">
-                                            <label for="tipe">Tipe</label>
-                                            <input type="text"  id="tipe" class="form-control" name="tipe">
+                                            <label for="pengelompokan">pengelompokan</label>
+                                            <input type="text"  id="pengelompokan" class="form-control" name="pengelompokan">
                                         </div>
                                         <div class="form-group">
                                             <label for="nilai_aset">Nilai Aset</label>

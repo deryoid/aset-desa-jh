@@ -11,7 +11,7 @@ include_once '../../config/auth-cek.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kerusakan Barang</title>
+    <title>Perbaikan Barang</title>
     <link rel="shortcut icon" href="<?= base_url() ?>/assets/images/logo-kab-hss.png">
 
     <style>
@@ -97,7 +97,7 @@ include_once '../../config/auth-cek.php';
     <hr size="1.5" style="margin-bottom: 5px; color: black; font-weight: bold;">
 
     <div class="judul">
-        Kerusakan Barang
+    Perbaikan Barang
     </div>
 
     <table border="1" cellspacing="0  ">
@@ -106,17 +106,17 @@ include_once '../../config/auth-cek.php';
             <th>No</th>
             <th>Kode Barang</th>
             <th>Nama Barang</th>
-            <th>pengelompokan</th>
-            <th>Nilai Aset</th>
-            <th>Sumber Dana</th>
-            <th>Tanggal Perolehan</th>
-            <th>Kondisi</th>
-            <th>Jumlah Stok</th>
+            <th>Status Perbaikan Barang</th>
+            <th>Tanggal</th>
+            <th>Jumlah yang Diperbaiki</th>
+            
         </tr>
         </thead>
         <?php 
         $no = 1;
-        $data = $koneksi->query("SELECT * FROM barang AS br LEFT JOIN sumberdana AS sd ON br.id_sumberdana = sd.id_sumberdana WHERE br.kondisi = 'Rusak'");
+        $data = $koneksi->query("SELECT * FROM perbaikan AS pb
+        LEFT JOIN barang AS bg
+        ON pb.id_barang = bg.id_barang");
         foreach ($data as $row) {  
         ?>
         <tbody>
@@ -124,16 +124,22 @@ include_once '../../config/auth-cek.php';
             <td><?= $no++; ?></td>
             <td><?= $row['kode_barang']; ?></td>
             <td><?= $row['nama_barang']; ?></td>
-            <td><?= $row['pengelompokan']; ?></td>
-            <td><?= $row['nilai_aset']; ?></td>
-            <td><?= $row['nama_sumberdana']; ?></td>
-            <td><?= $row['tanggal_perolehan']; ?></td>
-            <td><?= $row['kondisi']; ?></td>
-            <td><?= $row['jumlah_stok']; ?></td>
+            <td style="text-align: center;">
+            <?php if ($row['status_perbaikan'] == 'Sedang Diperbaiki'){ ?>
+            <span class="badge badge-warning badge-lg"><i class="mdi mdi-check-decagram"></i> Sedang Diperbaiki</span><br>
+            <?php }elseif ($row['status_perbaikan'] == 'Telah Diperbaiki'){ ?>
+            <span class="badge badge-success badge-lg"><i class="mdi mdi-close-octagon"> Telah Diperbaiki</i></span>
+            <?php }?>
+            </td>
+            <td><?= $row['tgl_perbaikan']; ?></td>
+            <td><?= $row['jumlah_perbaikan']; ?></td>
             </td>
         </tr>
         </tbody>
-    <?php } ?>
+    <?php }
+    
+    
+    ?>
     </table>
 
     <!-- <div style="margin-top: 10px;">
