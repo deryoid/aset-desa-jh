@@ -97,7 +97,7 @@ require_once 'config/config.php';
                     </div>
 
                 </div>
-                <!-- end row -->
+                
 
                 <div class="row">
                     <div class="col-sm-4">
